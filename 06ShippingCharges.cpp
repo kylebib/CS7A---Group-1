@@ -14,12 +14,13 @@
 
 using namespace std;
 
+//Function Prototype
 double calculateCharge(double,double);
 
 int main() {
 
-    double weightOfPackage = 0,
-           distanceBeingShipped = 0,
+    double weightOfPackage,
+           distanceBeingShipped,
            runningTotal = 0.00;
     
     do {
