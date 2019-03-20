@@ -30,10 +30,10 @@ int main() {
         cout << "\n\nEnter weight of package(in kg), or enter '0' to exit: ";
         cin >> weightOfPackage;
         
-        do {
+        while(weightOfPackage < 0) {
             cout << "\n\nEnter positive weight(in kg), or enter '0' to exit: ";
             cin >> weightOfPackage;
-        } while(weightOfPackage < 0);
+        }
         
         
         if(weightOfPackage == 0) {
@@ -43,10 +43,10 @@ int main() {
         cout << "\n\nEnter distance package is being shipped(in miles): ";
         cin >> distanceBeingShipped;
         
-        do {
+        while(distanceBeingShipped < 0) {
             cout << "\n\nEnter positive distance(in miles): ";
             cin >> distanceBeingShipped;
-        } while(weightOfPackage < 0);
+        } 
         
         runningTotal += calculateCharge(weightOfPackage, distanceBeingShipped);
         
