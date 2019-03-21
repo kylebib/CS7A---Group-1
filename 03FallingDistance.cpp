@@ -37,6 +37,19 @@ int main()
 		cout << setw(10) << "" << time << setw(13) << "" << distance << "\n";
 	}
 }
+
+/*******************************************************************************
+*								fallingDistance()							   *
+*																			   *
+*				This function calculates returns a distance by using the	   *
+*				distance formula included in the body.						   *
+*																		       *
+*				Precondition: This function plugs in the values (1-10) for	   *
+*				variable time in the distance formula.					       *
+*																			   *
+*				Postcondition: A double value for distance is returned		   *
+*																			   *
+********************************************************************************/
 double fallingDistance(int time)
 {
 	double distance = 0;
