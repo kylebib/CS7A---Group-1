@@ -201,7 +201,7 @@ void printVowelCount(int aA, int eE, int iI, int oO, int uU){
 }
 
 /****************************************************************************
- *                  Function Description: charNumToNum()                    *
+ *                  Function Description: charToInt()                    *
  *                                                                          *
  *      when this function is called, the function will convert a character *
  *      number to an integer.                                               *
@@ -210,8 +210,10 @@ void printVowelCount(int aA, int eE, int iI, int oO, int uU){
  *                      converted to an integer number between 0 - 9        *
  *      @Postcondition: This function returns an integer between 1 - 9.     *
  ***************************************************************************/
-int charNumToNum(char ch){
-
+int charToInt(char ch){
+    
+    return ch - '0';      
+    
 }
 
 /****************************************************************************
@@ -220,7 +222,7 @@ int charNumToNum(char ch){
  *      when this function is called, the function will sum up all the      *
  *      digits in a text file.                                              *
  *      The function opens an input stream and read characters from the     *
- *      file. if the character is a number, use the charNumToNum function   *
+ *      file. if the character is a number, use the charToInt function      *
  *      to convert the number to an integer.                                *
  *      Then the function will print out a formatted table to the console   *
  *      to indicate the sum of all the digits in the file                   *
