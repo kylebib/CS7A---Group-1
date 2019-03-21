@@ -35,7 +35,7 @@ int main() {
             cin >> weightOfPackage;
         }
         
-        
+         
         if(weightOfPackage == 0) {
             break;
         }
