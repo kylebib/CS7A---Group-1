@@ -25,7 +25,7 @@ double fallingDistance(int time);
 
 int main()
 {
-	int time;
+	double time;
 	double distance = 0;
 
 	cout << "\n\n\n";
