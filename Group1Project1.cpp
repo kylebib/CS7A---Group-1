@@ -232,5 +232,24 @@ int charToInt(char ch){
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
 void printSumOfNum(ifstream &in){
+    
+   double total;
+   char character;
+   
+   in.open("randomchars.txt");
+ 
+   if (!in) {
+        cout << "ERROR opening file";
+        exit(0);
+   }
+   
+   while (in.get(character) || !in.eof()) {
+       if (isdigit(character)) {
+           total += charToInt(character);
+       }
+   }
+   
+   cout << total;
+   in.close();
 
 }
