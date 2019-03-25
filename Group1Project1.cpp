@@ -38,8 +38,8 @@ void printSumOfNum(ifstream &);
 int main() {
 
     srand(time(NULL));
-    ifstream inFile("inFile.txt");
-    ofstream outFile("outFile.txt");
+    ifstream inFile;
+    ofstream outFile;
 
     int choice;
     int count_A = 0, count_E = 0, count_I = 0, count_O = 0, count_U = 0;
@@ -68,21 +68,19 @@ int main() {
                 printSumOfNum(inFile);
                 break;
             default:
-		goodbyeMessage();
                 break;
         }
         
     } while (choice != 6);
 
-    inFile.close();
-    outFile.close();
+    
+    goodbyeMessage();
 
     return 0;
 }
 
 void goodbyeMessage() {
 
-    system("cls");
     cout << "\n\n\n";
     cout << setw(10) << "" << "Thanks for using the Program\n";
     cout << setw(20) << "" << "GOODBYE!!\n\n";
@@ -90,6 +88,7 @@ void goodbyeMessage() {
     cout << "\n\n" << setw(10) << "" << "Press any key to continue . . .\n\n";
     cin.ignore();
     cin.get();
+    cin.ignore();
 
 }
 
@@ -302,6 +301,8 @@ void printSumOfNum(ifstream &in) {
     double total;
     char character;
 
+    in.open("inFile.txt");
+    
     if (!in) {
         cout << "ERROR opening file";
         exit(0);
@@ -317,12 +318,15 @@ void printSumOfNum(ifstream &in) {
     cout << setw(10) << "" << " _______________________________\n";
     cout << setw(10) << "" << "|     Total      |" << setw(8) << total << "      |\n";
     cout << setw(10) << "" << "|________________|______________|\n\n";
-
+    in.close();
 
     cout << setw(10) << "" << "Press any key to continue . . .\n\n";
     cin.ignore();
     cin.get();
+    cin.ignore();
 
+    
+    
     system("cls");
 
 }
