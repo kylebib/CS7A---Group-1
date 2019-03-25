@@ -4,7 +4,7 @@
  *      This program is a menu driven program that is performing file       *
  *      operations in different ways.                                       *
  *                                                                          *
- *      @Author:    Steinar Johansen                                        *
+ *      @Author:    Kyle, Luis, Ines, Chris, Theo                           *
  *      @Created:   March 20, 2019                                          *
  ***************************************************************************/
 
@@ -22,6 +22,7 @@ using namespace std;
 void myMenu();
 int getChoice();
 void dummyMessage();
+void goodbyeMessage();
 
 // Program Specific function prototypes
 void writeNamesToFile(ofstream &);
@@ -34,17 +35,62 @@ int charToInt(char);
 int charNumToNum(char);
 void printSumOfNum(ifstream &);
 
-int main()
-{
+int main() {
 
     srand(time(NULL));
-    ifstream    inFile;
-    ofstream    outFile;
+    ifstream inFile("inFile.txt");
+    ofstream outFile("outFile.txt");
 
-    int         choice;
-    int         count_A = 0, count_E = 0, count_I = 0, count_O = 0, count_U = 0;
+    int choice;
+    int count_A = 0, count_E = 0, count_I = 0, count_O = 0, count_U = 0;
+
+    do {
+        myMenu();
+
+        choice = getChoice();
+
+        switch (choice) {
+
+            case 1:
+                writeNamesToFile(outFile);
+                break;
+            case 2:
+                readNamesFromFiles(inFile);
+                break;
+            case 3:
+                writeRandomCharsToFile(outFile);
+                break;
+            case 4:
+                printVowelCount(count_A, count_E, count_I, count_O, count_U);
+                break;
+
+            case 5:
+                printSumOfNum(inFile);
+                break;
+            default:
+                break;
+        }
+        
+    } while (choice != 6);
+
+    inFile.close();
+    outFile.close();
+    
+    goodbyeMessage();
 
     return 0;
+}
+
+void goodbyeMessage() {
+
+    cout << "\n\n\n";
+    cout << setw(10) << "" << "Thanks for using the Program\n";
+    cout << setw(20) << "" << "GOODBYE!!\n\n";
+
+    cout << "\n\n" << setw(10) << "" << "Press any key to continue . . .\n\n";
+    cin.ignore();
+    cin.get();
+
 }
 
 /****************************************************************************
@@ -59,10 +105,23 @@ int main()
  *      @Precondition:   This function does not take any arguments.         *
  *      @Postcondition:  This function does not return anything             *
  ***************************************************************************/
-void myMenu(){
+void myMenu() {
+    
+	system("cls");
+	
+	cout << "\n\n\n";
+	cout << setw(10) << "" << " FILE HANDLING PROGRAM" << endl;
+	cout << setw(10) << "" << "_________________________" << endl;
 
+	cout << setw(10) << "" << "1. Write Names to File" << endl;
+	cout << setw(10) << "" << "2. List Names on File" << endl;
+	cout << setw(10) << "" << "3. Write Random Chars to File" << endl;
+	cout << setw(10) << "" << "4. Count Vowels" << endl;
+	cout << setw(10) << "" << "5. Sum up Integers on File" << endl;
+	cout << setw(10) << "" << "6. Exit the Program" << endl << endl;
+
+	cout << setw(10) << "" << "Enter your Choice: ";
 }
-
 /****************************************************************************
  *                 Function Description: getChoice()                        *
  *                                                                          *
@@ -75,8 +134,15 @@ void myMenu(){
  *      @Postcondition:  This function returns an integer that reflects the *
  *                       possible choices in the menu.                      *
  ***************************************************************************/
-int getChoice(){
+int getChoice() {
+    int choice;
 
+    cin >> choice;
+    while (choice < 1 || choice > 6) {
+        cout << "The only valid Choices are 1-6. Please re-enter: ";
+        cin >> choice;
+    }
+    return choice;
 }
 
 /****************************************************************************
@@ -90,7 +156,7 @@ int getChoice(){
  *      @Precondition:   This function does not take any arguments.         *
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
-void dummyMessage(){
+void dummyMessage() {
 
 }
 
@@ -108,7 +174,7 @@ void dummyMessage(){
  *                       reference argument.                                *
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
-void writeNamesToFile(ofstream &out){
+void writeNamesToFile(ofstream &out) {
 
 }
 
@@ -125,7 +191,7 @@ void writeNamesToFile(ofstream &out){
  *                       reference argument.                                *
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
-void readNamesFromFiles(ifstream &in){
+void readNamesFromFiles(ifstream &in) {
 
 }
 
@@ -139,7 +205,7 @@ void readNamesFromFiles(ifstream &in){
  *                      converted to a char                                 *
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
-char randToChar(int num){
+char randToChar(int num) {
 
 }
 
@@ -157,7 +223,7 @@ char randToChar(int num){
  *                      argument.                                           *
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
-void writeRandomCharsToFile(ofstream &out){
+void writeRandomCharsToFile(ofstream &out) {
 
 }
 
@@ -178,7 +244,7 @@ void writeRandomCharsToFile(ofstream &out){
  *                      different vowels in a text file.                    *
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
-void countVowels(ifstream &in, int &aA, int &eE, int &iI, int &oO, int &uU){
+void countVowels(ifstream &in, int &aA, int &eE, int &iI, int &oO, int &uU) {
 
 }
 
@@ -196,7 +262,7 @@ void countVowels(ifstream &in, int &aA, int &eE, int &iI, int &oO, int &uU){
  *                      print in the table that is being printed out        *
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
-void printVowelCount(int aA, int eE, int iI, int oO, int uU){
+void printVowelCount(int aA, int eE, int iI, int oO, int uU) {
 
 }
 
@@ -210,10 +276,10 @@ void printVowelCount(int aA, int eE, int iI, int oO, int uU){
  *                      converted to an integer number between 0 - 9        *
  *      @Postcondition: This function returns an integer between 1 - 9.     *
  ***************************************************************************/
-int charToInt(char ch){
-    
-    return ch - '0';      
-    
+int charToInt(char ch) {
+
+    return static_cast<int> (ch) - static_cast<int> ('0');
+
 }
 
 /****************************************************************************
@@ -231,29 +297,32 @@ int charToInt(char ch){
  *                      argument.                                           *
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
-void printSumOfNum(ifstream &in){
-    
-   double total;
-   char character;
-   
-   in.open("randomchars.txt");
- 
-   if (!in) {
+void printSumOfNum(ifstream &in) {
+
+    double total;
+    char character;
+
+    if (!in) {
         cout << "ERROR opening file";
         exit(0);
-   }
-   
-   while (in.get(character) || !in.eof()) {
-       if (isdigit(character)) {
-           total += charToInt(character);
-       }
-   }
-   
-   cout << "\n\n\n" << setw(15) << "" << "SUM OF DIGITS IN FILE\n";
-   cout << setw(10) << "" << " _______________________________\n";
-   cout << setw(10) << "" << "|     Total      |" << setw(8) << total << "      |\n";
-   cout << setw(10) << "" << "|________________|______________|\n\n";
+    }
 
-   in.close();
+    while (in.get(character) || !in.eof()) {
+        if (isdigit(character)) {
+            total += charToInt(character);
+        }
+    }
+
+    cout << "\n\n\n" << setw(15) << "" << "SUM OF DIGITS IN FILE\n";
+    cout << setw(10) << "" << " _______________________________\n";
+    cout << setw(10) << "" << "|     Total      |" << setw(8) << total << "      |\n";
+    cout << setw(10) << "" << "|________________|______________|\n\n";
+
+
+    cout << setw(10) << "" << "Press any key to continue . . .\n\n";
+    cin.ignore();
+    cin.get();
+
+    system("cls");
 
 }
