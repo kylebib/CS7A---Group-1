@@ -68,6 +68,7 @@ int main() {
                 printSumOfNum(inFile);
                 break;
             default:
+		goodbyeMessage();
                 break;
         }
         
@@ -75,8 +76,6 @@ int main() {
 
     inFile.close();
     outFile.close();
-    
-    goodbyeMessage();
 
     return 0;
 }
