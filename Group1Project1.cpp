@@ -82,6 +82,7 @@ int main() {
 
 void goodbyeMessage() {
 
+    system("cls");
     cout << "\n\n\n";
     cout << setw(10) << "" << "Thanks for using the Program\n";
     cout << setw(20) << "" << "GOODBYE!!\n\n";
