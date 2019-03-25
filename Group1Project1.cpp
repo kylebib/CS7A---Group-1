@@ -63,7 +63,6 @@ int main() {
             case 4:
                 printVowelCount(count_A, count_E, count_I, count_O, count_U);
                 break;
-
             case 5:
                 printSumOfNum(inFile);
                 break;
@@ -277,7 +276,7 @@ void printVowelCount(int aA, int eE, int iI, int oO, int uU) {
  ***************************************************************************/
 int charToInt(char ch) {
 
-    return static_cast<int> (ch) - static_cast<int> ('0');
+    return static_cast<int>(ch) - static_cast<int>('0');
 
 }
 
@@ -324,9 +323,6 @@ void printSumOfNum(ifstream &in) {
     cin.ignore();
     cin.get();
     cin.ignore();
-
-    
-    
     system("cls");
 
 }
