@@ -88,7 +88,6 @@ void goodbyeMessage() {
     cout << "\n\n" << setw(10) << "" << "Press any key to continue . . .\n\n";
     cin.ignore();
     cin.get();
-    cin.ignore();
 
 }
 
@@ -161,11 +160,10 @@ void dummyMessage(){
     system("CLS");
     cout << "\n\n\n";
     cout << setw(10) << "" << "Not yet done. Revisit";
-    
+
     cout << setw(10) << "" << "Press any key to continue . . .\n\n";
     cin.ignore();
     cin.get();
-    cin.ignore();
 }
 
 /****************************************************************************
@@ -213,7 +211,6 @@ void writeNamesToFile(ofstream &out) {
     cout << setw(10) << "" << "Press any key to continue . . .\n\n";
     cin.ignore();
     cin.get();
-    cin.ignore();
 }
 
 /****************************************************************************
@@ -248,11 +245,10 @@ void readNamesFromFiles(ifstream &in) {
     }
 
     in.close();
-    
+
     cout << setw(10) << "" << "Press any key to continue . . .\n\n";
     cin.ignore();
     cin.get();
-    cin.ignore();
 }
 
 /****************************************************************************
@@ -267,7 +263,7 @@ void readNamesFromFiles(ifstream &in) {
  ***************************************************************************/
 char randToChar(int num) {
 
-    
+
 
 }
 
@@ -310,7 +306,7 @@ void countVowels(ifstream &in, int &aA, int &eE, int &iI, int &oO, int &uU) {
 
     char c;
 
-    in.open("inFile.txt");
+    in.open("randomChars.txt");
 
     if (!in) {
         cout << "ERROR! Could not open file";
@@ -375,7 +371,6 @@ void printVowelCount(int aA, int eE, int iI, int oO, int uU) {
     cout << setw(9) << "" << "Press any key to continue..." << endl;
     cin.ignore();
     cin.get();
-    cin.ignore();
 
 }
 
