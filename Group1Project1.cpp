@@ -182,6 +182,7 @@ void writeNamesToFile(ofstream &out) {
     system("CLS");
     cout << "\n\n\n";
 
+    cin.ignore();
     while (name != "-1") {
 
         out << "\n\n";
