@@ -61,6 +61,7 @@ int main() {
                 writeRandomCharsToFile(outFile);
                 break;
             case 4:
+                countVowels(inFile, count_A, count_E, count_I, count_O, count_U);
                 printVowelCount(count_A, count_E, count_I, count_O, count_U);
                 break;
             case 5:
@@ -69,10 +70,10 @@ int main() {
             default:
                 break;
         }
-        
+
     } while (choice != 6);
 
-    
+
     goodbyeMessage();
 
     return 0;
@@ -104,22 +105,23 @@ void goodbyeMessage() {
  *      @Postcondition:  This function does not return anything             *
  ***************************************************************************/
 void myMenu() {
-    
-	system("cls");
-	
-	cout << "\n\n\n";
-	cout << setw(10) << "" << " FILE HANDLING PROGRAM" << endl;
-	cout << setw(10) << "" << "_________________________" << endl;
 
-	cout << setw(10) << "" << "1. Write Names to File" << endl;
-	cout << setw(10) << "" << "2. List Names on File" << endl;
-	cout << setw(10) << "" << "3. Write Random Chars to File" << endl;
-	cout << setw(10) << "" << "4. Count Vowels" << endl;
-	cout << setw(10) << "" << "5. Sum up Integers on File" << endl;
-	cout << setw(10) << "" << "6. Exit the Program" << endl << endl;
+    system("cls");
 
-	cout << setw(10) << "" << "Enter your Choice: ";
+    cout << "\n\n\n";
+    cout << setw(10) << "" << " FILE HANDLING PROGRAM" << endl;
+    cout << setw(10) << "" << "_________________________" << endl;
+
+    cout << setw(10) << "" << "1. Write Names to File" << endl;
+    cout << setw(10) << "" << "2. List Names on File" << endl;
+    cout << setw(10) << "" << "3. Write Random Chars to File" << endl;
+    cout << setw(10) << "" << "4. Count Vowels" << endl;
+    cout << setw(10) << "" << "5. Sum up Integers on File" << endl;
+    cout << setw(10) << "" << "6. Exit the Program" << endl << endl;
+
+    cout << setw(10) << "" << "Enter your Choice: ";
 }
+
 /****************************************************************************
  *                 Function Description: getChoice()                        *
  *                                                                          *
@@ -173,7 +175,33 @@ void dummyMessage() {
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
 void writeNamesToFile(ofstream &out) {
+    out.open("names.text");
 
+    string name = "";
+
+    system("CLS");
+    cout << "\n\n\n";
+
+    while (name != "-1") {
+
+        out << "\n\n";
+
+        cout << setw(10) << "" << "Enter a First and Last Name or -1 to exit: ";
+        getline(cin, name);
+
+        if (name == "-1") {
+            break;
+        }
+        out << name;
+
+    }
+
+    out.close();
+
+    cout << setw(10) << "" << "FILE CREATED!!!" << endl << endl;
+
+
+    system("PAUSE");
 }
 
 /****************************************************************************
@@ -191,6 +219,25 @@ void writeNamesToFile(ofstream &out) {
  ***************************************************************************/
 void readNamesFromFiles(ifstream &in) {
 
+    system("CLS");
+    cout << "\n\n\n" << endl;
+    char words;
+
+    cout << setw(10) << "NAMES ON FILE" << endl;
+    cout << setw(10) << "________________________" << endl;
+    cout << "\n\n\n" << endl;
+
+    in.open("names.txt");
+    if (!in) {
+        cout << setw(10) << "" << "Error could not open file";
+        exit(0);
+    }
+    while (in.get(words) || !in.eof()) {
+        cout << words;
+    }
+
+    in.close();
+    system("PAUSE");
 }
 
 /****************************************************************************
@@ -204,6 +251,8 @@ void readNamesFromFiles(ifstream &in) {
  *      @Postcondition: This function does not return anything.             *
  ***************************************************************************/
 char randToChar(int num) {
+
+    
 
 }
 
@@ -244,6 +293,34 @@ void writeRandomCharsToFile(ofstream &out) {
  ***************************************************************************/
 void countVowels(ifstream &in, int &aA, int &eE, int &iI, int &oO, int &uU) {
 
+    char c;
+
+    in.open("inFile.txt");
+
+    if (!in) {
+        cout << "ERROR! Could not open file";
+        exit(0);
+    }
+
+    while (in.get(c) || !in.eof()) {
+
+        if ((c == 'a') || c == 'A') {
+            aA++;
+        }
+        if ((c == 'e') || c == 'E') {
+            eE++;
+        }
+        if ((c == 'i') || c == 'I') {
+            iI++;
+        }
+        if ((c == 'o') || c == 'O') {
+            oO++;
+        }
+        if ((c == 'u') || c == 'U') {
+            uU++;
+        }
+    }
+    in.close();
 }
 
 /****************************************************************************
@@ -262,6 +339,29 @@ void countVowels(ifstream &in, int &aA, int &eE, int &iI, int &oO, int &uU) {
  ***************************************************************************/
 void printVowelCount(int aA, int eE, int iI, int oO, int uU) {
 
+    system("clear");
+
+    cout << "\n\n\n";
+    cout << setw(17) << "" << "VOWEL COUNT" << endl;
+    cout << setw(10) << "" << "___________________________" << endl;
+    cout << setw(10) << "|" << setw(5) << "" << "A/a" << setw(5) << "" << "|" << setw(7) << aA << setw(7) << "|" << endl;
+    cout << setw(10) << "|" << "_____________|_____________|" << endl;
+    cout << setw(10) << "|" << setw(5) << "" << "E/e" << setw(5) << "" << "|" << setw(7) << eE << setw(7) << "|" << endl;
+    cout << setw(10) << "|" << "_____________|_____________|" << endl;
+    cout << setw(10) << "|" << setw(5) << "" << "I/i" << setw(5) << "" << "|" << setw(7) << iI << setw(7) << "|" << endl;
+    cout << setw(10) << "|" << "_____________|_____________|" << endl;
+    cout << setw(10) << "|" << setw(5) << "" << "O/o" << setw(5) << "" << "|" << setw(7) << oO << setw(7) << "|" << endl;
+    cout << setw(10) << "|" << "_____________|_____________|" << endl;
+    cout << setw(10) << "|" << setw(5) << "" << "U/u" << setw(5) << "" << "|" << setw(7) << uU << setw(7) << "|" << endl;
+    cout << setw(10) << "|" << "_____________|_____________|" << endl;
+
+    system("pause");
+    cout << "\n\n";
+    cout << setw(9) << "" << "Press any key to continue..." << endl;
+    cin.ignore();
+    cin.get();
+    cin.ignore();
+
 }
 
 /****************************************************************************
@@ -276,7 +376,7 @@ void printVowelCount(int aA, int eE, int iI, int oO, int uU) {
  ***************************************************************************/
 int charToInt(char ch) {
 
-    return static_cast<int>(ch) - static_cast<int>('0');
+    return static_cast<int> (ch) - static_cast<int> ('0');
 
 }
 
@@ -301,7 +401,7 @@ void printSumOfNum(ifstream &in) {
     char character;
 
     in.open("inFile.txt");
-    
+
     if (!in) {
         cout << "ERROR opening file";
         exit(0);
@@ -323,6 +423,9 @@ void printSumOfNum(ifstream &in) {
     cin.ignore();
     cin.get();
     cin.ignore();
+
+
+
     system("cls");
 
 }
