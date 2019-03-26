@@ -156,8 +156,16 @@ int getChoice() {
  *      @Precondition:   This function does not take any arguments.         *
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
-void dummyMessage() {
+void dummyMessage(){
 
+    system("CLS");
+    cout << "\n\n\n";
+    cout << setw(10) << "" << "Not yet done. Revisit";
+    
+    cout << setw(10) << "" << "Press any key to continue . . .\n\n";
+    cin.ignore();
+    cin.get();
+    cin.ignore();
 }
 
 /****************************************************************************
@@ -175,7 +183,7 @@ void dummyMessage() {
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
 void writeNamesToFile(ofstream &out) {
-    out.open("names.text");
+    out.open("names.txt");
 
     string name = "";
 
@@ -193,7 +201,7 @@ void writeNamesToFile(ofstream &out) {
         if (name == "-1") {
             break;
         }
-        out << name;
+        out << setw(10) << "" << name;
 
     }
 
@@ -202,7 +210,10 @@ void writeNamesToFile(ofstream &out) {
     cout << setw(10) << "" << "FILE CREATED!!!" << endl << endl;
 
 
-    system("PAUSE");
+    cout << setw(10) << "" << "Press any key to continue . . .\n\n";
+    cin.ignore();
+    cin.get();
+    cin.ignore();
 }
 
 /****************************************************************************
@@ -224,9 +235,8 @@ void readNamesFromFiles(ifstream &in) {
     cout << "\n\n\n" << endl;
     char words;
 
-    cout << setw(10) << "NAMES ON FILE" << endl;
-    cout << setw(10) << "________________________" << endl;
-    cout << "\n\n\n" << endl;
+    cout << setw(10) << "" << "NAMES ON FILE" << endl;
+    cout << setw(10) << "" <<  "________________________" << endl;
 
     in.open("names.txt");
     if (!in) {
@@ -238,7 +248,11 @@ void readNamesFromFiles(ifstream &in) {
     }
 
     in.close();
-    system("PAUSE");
+    
+    cout << setw(10) << "" << "Press any key to continue . . .\n\n";
+    cin.ignore();
+    cin.get();
+    cin.ignore();
 }
 
 /****************************************************************************
@@ -424,9 +438,5 @@ void printSumOfNum(ifstream &in) {
     cin.ignore();
     cin.get();
     cin.ignore();
-
-
-
-    system("cls");
 
 }
