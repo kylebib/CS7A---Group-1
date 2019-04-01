@@ -31,13 +31,18 @@ int getChoice();
 int getTriangleChoice();
 void goodbyeMessage();
 void dummyMessage();
+void pause();
+void clearScreen();
 
 int main() {
 
     int choice,
-            triangleChoice;
+        triangleChoice;
 
+    intro();
+    
     do {
+        
         mainMenu();
 
         choice = getChoice();
@@ -66,8 +71,7 @@ int main() {
                             break;
                         }
                     
-
-                } while (choice != 4);
+                } while (triangleChoice != 4);
 
                 break;
                 
@@ -97,9 +101,8 @@ void goodbyeMessage() {
 
     cout << "\n\n\n";
     cout << setw(10) << "" << "Thanks for using the Program, Goodbye\n\n";
-    cout << setw(10) << "" << "Press any key to continue . . .\n\n";
-    cin.ignore();
-    cin.get();
+    
+    pause();
 
 }
 
@@ -130,17 +133,14 @@ void intro() {
     cout << setw(15) << "" << "	                     000000000			\n";
     cout << setw(15) << "" << "	                       00000			\n";
     cout << setw(15) << "" << "	                         0	\n";
-    cout << setw(10) << "" << "\nPress any key to continue . . .\n";
-
-
-
-
+     
+    pause();
 
 }
 
 void mainMenu() {
 
-    system("cls");
+    clearScreen();
 
     cout << "\n\n\n";
     cout << setw(10) << "" << "	 TRIGONOMETRY VERSION 2.0.0\n";
@@ -168,7 +168,7 @@ int getChoice() {
 void dummyMessage() {
 
     cout << setw(10) << "" << "This page has not yet been built\n";
-    system("pause");
+    pause();
 }
 
 int getTriangleChoice() {
@@ -176,9 +176,17 @@ int getTriangleChoice() {
     int triChoice;
     cin >> triChoice;
     while (triChoice < 1 || triChoice > 4) {
-        cout << "The only valid Choices are 1-3. Please re-enter: ";
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
         cin >> triChoice;
     }
     return triChoice;
 
+}
+
+void pause() {
+    system("pause");
+}
+
+void clearScreen() {
+    system("cls");
 }
