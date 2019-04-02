@@ -58,9 +58,9 @@ const double PI = 3.14159;
 int main() {
 
 	int choice,
-		triangleChoice,
-		trapChoice,
-		circChoice;
+            triangleChoice,
+            trapChoice,
+            circChoice;
 
 	intro();
 
@@ -231,6 +231,16 @@ int getChoice() {
 	return choice;
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION dummyMessage()                     *
+ *                                                                          *
+ *      This function is a placeholder function until other functions in    *
+ *      the program are completed. When called it displays a message and    *
+ *      pauses the console screen.                                          *
+ *                                                                          *
+ *      @Precondition:  This function does not take any arguments.          *
+ *      @Postcondition: This function does not return anything.             *
+ ****************************************************************************/
 void dummyMessage() {
 
 	cout << setw(10) << "" << "This page has not yet been built\n";
@@ -249,10 +259,26 @@ int getTriangleChoice() {
 
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION pause()                            *
+ *                                                                          *
+ *      This function pauses the console screen when called.                *                           *
+ *                                                                          *
+ *      @Precondition:  This function does not take any arguments.          *
+ *      @Postcondition: This function does not return anything.             *
+ ****************************************************************************/
 void pause() {
 	system("pause");
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION clearScreen()                      *
+ *                                                                          *
+ *      This function clears the console screen when called.                *                           *
+ *                                                                          *
+ *      @Precondition:  This function does not take any arguments.          *
+ *      @Postcondition: This function does not return anything.             *
+ ****************************************************************************/
 void clearScreen() {
 	system("cls");
 }
@@ -452,6 +478,17 @@ void circleDisplayOutput(int circChoice) {
 	pause();
 }
 
+
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION trapezoidMenu()                    *
+ *                                                                          *
+ *      This function clears the console screen when called, and then       *
+ *      displays a menu of related trapezoid calculations that the user     *
+ *      can select from.                                                    *
+ *                                                                          *
+ *      @Precondition:  This function does not take any arguments.          *
+ *      @Postcondition: This function does not return anything.             *
+ ****************************************************************************/
 void trapezoidMenu() {
 
 	clearScreen();
@@ -462,13 +499,25 @@ void trapezoidMenu() {
 
 	cout << setw(10) << "" << "1. Calculate Area\n";
 	cout << setw(10) << "" << "2. Calculate Height\n";
-	cout << setw(10) << "" << "3. Calculate Angles\n";
+	cout << setw(10) << "" << "3. Calculate Distance\n";
 	cout << setw(10) << "" << "4. Go Back\n\n";
 
 	cout << setw(10) << "" << "Enter your Choice: ";
 
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION trapezoidChoice()                  *
+ *                                                                          *
+ *      This function when called will prompt the user to enter an integer  *
+ *      choice representing their menu selection. If the user enters a      *
+ *      number that is not between 1 and 4, endpoints included, then the    *
+ *      function will prompt the user to re-enter their selection.          *                           *
+ *                                                                          *
+ *      @Precondition:  This function does not take any arguments.          *
+ *      @Postcondition: This function returns an integer representing       *
+ *                      the user's menu selection choice.                   *
+ ****************************************************************************/
 int trapezoidChoice() {
 
 	int trapChoice;
@@ -481,39 +530,70 @@ int trapezoidChoice() {
 
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION trapezoidCalcArea()                *
+ *                                                                          *
+ *      This function receives three doubles passed by value, representing  *
+ *      the height, left and right sides of the trapezoid and returns the   *
+ *      area.                                                               *
+ *                                                                          *
+ *      @Precondition:  This function receives three doubles as arguments.  *
+ *      @Postcondition: This function returns the area of the trapezoid.    *
+ ****************************************************************************/
 double trapezoidCalcArea(double height, double sideA, double sideB) {
 
 	return ((sideA + sideB) / 2) * height;
 
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION trapezoidCalcHeight()              *
+ *                                                                          *
+ *      This function receives three doubles passed by value, representing  *
+ *      the area, left and right sides of the trapezoid and returns the     *
+ *      area.                                                               *
+ *                                                                          *
+ *      @Precondition:  This function receives three doubles as arguments.  *
+ *      @Postcondition: This function returns the height of the trapezoid.  *
+ ****************************************************************************/
 double trapezoidCalcHeight(double area, double sideA, double sideB) {
 
 	return 2 * (area / (sideA + sideB));
 
 }
 
+/****************************************************************************
+ *                  FUNCTION DESCRIPTION trapezoidDisplayOutput()           *
+ *                                                                          *
+ *      This function receives one integer trapChoice as an argument passed *
+ *      by value and first clears the screen before outputting a menu based *
+ *      on the value of the passed integer. Each of the three possible      *
+ *      menus will collect data from the user to perform a calculation.     *                                                               *
+ *                                                                          *
+ *      @Precondition:  This function receives one integer as an argument.  *
+ *      @Postcondition: This function does not return anything.             *
+ ****************************************************************************/
 void trapezoidDisplayOutput(int trapChoice) {
 
 	clearScreen();
 
 	cout << fixed << showpoint << setprecision(2);
 
-	int trapChoice1 = trapChoice;
+	int    trapChoice1 = trapChoice;
 	double height,
-		sideA,
-		sideB,
-		angleAX,
-		angleAY,
-		angleBX,
-		angleBY,
-		angleCX,
-		angleCY,
-		angleDX,
-		angleDY,
-		distanceAC,
-		distanceBD,
-		area;
+	       sideA,
+               sideB,
+               angleAX,
+               angleAY,
+               angleBX,
+               angleBY,
+               angleCX,
+               angleCY,
+               angleDX,
+               angleDY,
+               distanceAC,
+               distanceBD,
+               area;
 
 	cout << "\n\n\n";
 
@@ -525,6 +605,13 @@ void trapezoidDisplayOutput(int trapChoice) {
 		cout << setw(10) << "" << "  In order to calculate the area\n";
 		cout << setw(10) << "" << "   of a trapezoid, please enter\n ";
 		cout << setw(10) << "" << "    the following variables.\n\n";
+                
+                cout << setw(17) << "" << " A _____________ B\n";
+                cout << setw(17) << "" << "  /     |       \\\n";
+                cout << setw(16) << "" << "a /      |h       \\ b\n";
+                cout << setw(16) << "" << " /_______|_________\\\n";
+                cout << setw(15) << "" << "C                     D\n\n";
+                
 		cout << setw(10) << "" << "Enter height of trapezoid: ";
 		cin >> height;
 
@@ -533,7 +620,7 @@ void trapezoidDisplayOutput(int trapChoice) {
 			cin >> height;
 		}
 
-		cout << setw(10) << "" << "Enter left side of trapezoid: ";
+		cout << setw(10) << "" << "Enter side a of trapezoid: ";
 		cin >> sideA;
 
 		while (sideA < 0) {
@@ -541,7 +628,7 @@ void trapezoidDisplayOutput(int trapChoice) {
 			cin >> sideA;
 		}
 
-		cout << setw(10) << "" << "Enter left side of trapezoid: ";
+		cout << setw(10) << "" << "Enter side b of trapezoid: ";
 		cin >> sideB;
 
 		while (sideB < 0) {
@@ -566,6 +653,13 @@ void trapezoidDisplayOutput(int trapChoice) {
 		cout << setw(10) << "" << "  In order to calculate the height\n";
 		cout << setw(10) << "" << "    of a trapezoid, please enter\n ";
 		cout << setw(10) << "" << "      the following variables.\n\n";
+                
+                cout << setw(17) << "" << " A _____________ B\n";
+                cout << setw(17) << "" << "  /     |       \\\n";
+                cout << setw(16) << "" << "a /      |h       \\ b\n";
+                cout << setw(16) << "" << " /_______|_________\\\n";
+                cout << setw(15) << "" << "C                     D\n\n";
+                
 		cout << setw(10) << "" << "Enter area of trapezoid: ";
 		cin >> area;
 
@@ -574,7 +668,7 @@ void trapezoidDisplayOutput(int trapChoice) {
 			cin >> area;
 		}
 
-		cout << setw(10) << "" << "Enter left side of trapezoid: ";
+		cout << setw(10) << "" << "Enter side a of trapezoid: ";
 		cin >> sideA;
 
 		while (sideA < 0) {
@@ -582,7 +676,7 @@ void trapezoidDisplayOutput(int trapChoice) {
 			cin >> sideA;
 		}
 
-		cout << setw(10) << "" << "Enter left side of trapezoid: ";
+		cout << setw(10) << "" << "Enter side b of trapezoid: ";
 		cin >> sideB;
 
 		while (sideB < 0) {
@@ -605,7 +699,13 @@ void trapezoidDisplayOutput(int trapChoice) {
 		cout << setw(10) << "" << "   Enter coordinates for the four\n";
 		cout << setw(10) << "" << "   angles to find the distance\n";
 		cout << setw(10) << "" << "   between AC and BD\n\n";
-
+                
+                cout << setw(17) << "" << " A _____________ B\n";
+                cout << setw(17) << "" << "  /     |       \\\n";
+                cout << setw(16) << "" << "a /      |h       \\ b\n";
+                cout << setw(16) << "" << " /_______|_________\\\n";
+                cout << setw(15) << "" << "C                     D\n\n";
+                
 		cout << setw(10) << "" << "Enter x-coordinate for angle A: ";
 		cin >> angleAX;
 
@@ -672,8 +772,8 @@ void trapezoidDisplayOutput(int trapChoice) {
 
 
 
-		distanceAC = distanceFormula(angleAX, angleAY, angleCX, angleCY);
-		distanceBD = distanceFormula(angleBX, angleBY, angleDX, angleDY);
+		distanceAC = distanceFormula(angleAX, angleCX, angleAY, angleCY);
+		distanceBD = distanceFormula(angleBX, angleDX, angleBY, angleDY);
 
 		cout << "\n\n";
 
