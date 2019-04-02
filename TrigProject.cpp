@@ -168,10 +168,17 @@ void goodbyeMessage() {
 	cout << "\n\n\n";
 	cout << setw(10) << "" << "Thanks for using the Program, Goodbye\n\n";
 
-	pause();
-
 }
 
+/****************************************************************************
+ *                 Function Description: intro()		            *		            *
+ *                                                                          *
+ *      when this function is called, the function is responsible for       *
+ *      displaying an image and header indicating the start of the program. *
+ *                                                                          *
+ *      @Precondition:   This function does not take any arguments.         *
+ *      @Postcondition:  This function does not return anything.            *
+ ***************************************************************************/
 void intro() {
 	cout << setw(25) << "" << "WELCOME TO TRIG 2019 Ver. 2.0.0\n";
 	cout << setw(15) << "" << "____________________________________________________\n";
@@ -204,6 +211,17 @@ void intro() {
 
 }
 
+/****************************************************************************
+ *                 Function Description: mainMenu()                         *
+ *                                                                          *
+ *      when this function is called, the function is responsible for       *
+ *      clearing the console window adding three line shift top margin	    *
+ *      before header and menu is displayed. It is also responsible for     *
+ *      prompting the user to enter a choice.				    *				
+ *                                                                          *
+ *      @Precondition:   This function does not take any arguments.         *
+ *      @Postcondition:  This function does not return anything.            *
+ ***************************************************************************/
 void mainMenu() {
 
 	clearScreen();
@@ -220,6 +238,17 @@ void mainMenu() {
 	cout << setw(10) << "" << "Enter your Choice: ";
 }
 
+/********************************************************************************
+ *                 Function Description: getChoice()				*
+ *				             					*
+ *      when this function is called, the function shall collect the user's	*
+ *      input related to the main menu options.				        *
+ *										*
+ *      @Precondition:   This function does not take any arguments.		*
+ *										*
+ *      @Postcondition:  This function returns an integer that reflects the	*
+ *                       possible choices in the main menu.             	*
+ *******************************************************************************/
 int getChoice() {
 
 	int choice;
@@ -283,6 +312,17 @@ void clearScreen() {
 	system("cls");
 }
 
+/****************************************************************************
+ *                 Function Description: circleMenu()                       *
+ *                                                                          *
+ *      when this function is called, the function is responsible for       *
+ *      clearing the console window add three line shift top margin before  *
+ *      header and circle submenu is displayed. It is also responsible for  *
+ *      prompting the user to enter a choice.                               *
+ *                                                                          *
+ *      @Precondition:   This function does not take any arguments.         *
+ *      @Postcondition:  This function does not return anything.            *
+ ***************************************************************************/
 void circleMenu() {
 
 	clearScreen();
@@ -300,6 +340,17 @@ void circleMenu() {
 	cout << setw(10) << "" << "Enter your Choice: ";
 }
 
+/****************************************************************************
+ *                 Function Description: circleChoice()                     *
+ *                                                                          *
+ *      when this function is called, the function shall collect the users  *
+ *      input related to the circle submenu options.                        *
+ *						                            *
+ *      @Precondition:   This function does not take any arguments.         *
+ *									    *
+ *      @Postcondition:  This function returns an integer that reflects the *
+ *                       possible choices in the circle submenu.            *
+ ***************************************************************************/
 int circleChoice() {
 
 	int circChoice;
@@ -312,34 +363,108 @@ int circleChoice() {
 	return circChoice; 
 }
 
+/****************************************************************************
+ *                 Function Description: areaCircle()                       *
+ *                                                                          *
+ *      This function is responsible for calculating the area of a circle   *
+ *		using the radius.		   		            *
+ *                                                                          *
+ *      @Precondition:  This funtion takes the one double as an argument.   *
+ *			That argument being the radius of the circle.	    *
+ *	 								    *
+ *      @Postcondition: This function returns the area of the circle. 	    *
+ ***************************************************************************/
 double areaCircle(double radius) {
 
 	return PI * (radius * radius);
 
 }
 
+/****************************************************************************
+ *                 Function Description: circumference()                    *
+ *                                                                          *
+ *      This function is responsible for calculating the circumference of   *
+ *		a circle using the radius.				    *
+ *                                                                          *
+ *   @Precondition:  This funtion takes the one double as an argument.	    *
+ *		     That argument being the radius of the circle.          *
+ *									    *
+ *   @Postcondition: This function returns the circumference of the circle. *
+ ***************************************************************************/
 double circumference(double radius) {
 
 	return (2 * PI * radius); 
 
 }
 
+/********************************************************************************
+ *                 Function Description: arcLength()				*
+ *										*
+ *      This function is responsible for calculating the circumference of 	*
+ *		a circle using the radius.					*
+ *										*
+ *   @Precondition:  This funtion takes two doubles as arguments. The first	*
+ *		     being the radius and the second being the angle from	*
+ *		     the positive x-axis.					*
+ *										*
+ *   @Postcondition: This function returns the arc length of the curve. 	*
+ *******************************************************************************/
 double arcLength(double radius, double angle) {
 	
 	return (PI * 2 * radius) * (static_cast<double>(angle) / 360); 
 
 }
 
+/********************************************************************************
+ *                 Function Description: centerOfCircleX()			*
+ *										*
+ *      This function is responsible for calculating the x-coordinate of	*
+ *	circle's center using two points that represent the circles diameter.	*
+ *										*
+ *   @Precondition:  This funtion takes two doubles as arguments. The first	*
+ *                   being the x-coordinate of the first point and second	*
+ *		     being the x-coordinate of the second point.		*
+ *										*
+ *   @Postcondition: This function returns the x-coordinate of the circle's 	*
+ *					 center.				*
+ *******************************************************************************/
 double centerOfCircleX(double x1, double x2) {
 
 	return (x1 + x2) / 2;
 }
 
+/********************************************************************************
+ *                 Function Description: centerOfCircleY()          		*
+ *										*
+ *      This function is responsible for calculating the y-coordinate of	*
+ *	circle's center using two points that represent the circles             *
+ *      diameter.                                                               *
+ *										*
+ *   @Precondition:  This funtion takes two doubles as arguments. The first	*
+ *		     being the y-coordinate of the first point and second       *
+ *		     being the y-coordinate of the second point.		*
+ *										*
+ *   @Postcondition: This function returns the y-coordinate of the circle's 	*
+ *					 center.				*
+ *******************************************************************************/
 double centerOfCircleY(double y1, double y2) {
 
 	return (y1 + y2) / 2;
 }
 
+/*************************************************************************************
+*		Function Description: circleDisplayOutput()			     *
+*										     *
+*	This Function is responsible for clearing the console window, displaying     *
+*	the user choosen option and providing the format necessary for each viable   *
+*	choice.									     *
+*				 						     *
+*	@Precondition:	This function takes an integer of the user's choice from the *
+*			circle submenu as an argument.		 		     *
+*								 		     *
+*	@Postcondition:	This function returns nothing.		 		     *
+*			 							     *
+**************************************************************************************/
 void circleDisplayOutput(int circChoice) {
 
 	clearScreen();
