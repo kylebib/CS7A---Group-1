@@ -234,7 +234,7 @@ void trapezoidMenu() {
 
     cout << setw(10) << "" << "1. Calculate Area\n";
     cout << setw(10) << "" << "2. Calculate Height\n";
-    cout << setw(10) << "" << "3. Calculate Distance Formula\n";
+    cout << setw(10) << "" << "3. Calculate Angles\n";
     cout << setw(10) << "" << "4. Go Back\n\n";
     
     cout << setw(10) << "" << "Enter your Choice: ";
@@ -259,12 +259,6 @@ double trapezoidCalcArea(double height, double sideA, double sideB) {
   
 }
 
-double trapezoidCalcPerimeter(double baseC, double baseD, double sideA, double sideB) {
-    
-    return baseC + baseD + sideA + sideB;
-  
-}
-
 double trapezoidCalcHeight(double area, double sideA, double sideB) {
     
     return 2 * (area / (sideA + sideB));
@@ -275,11 +269,23 @@ void trapezoidDisplayOutput(int trapChoice) {
     
     clearScreen();
     
+    cout << fixed << showpoint << setprecision(2);
+    
     int trapChoice1 = trapChoice;
-    int height;
-    int sideA;
-    int sideB;
-    int area;
+    double height,
+           sideA,
+           sideB,
+           angleAX,
+           angleAY,
+           angleBX,
+           angleBY,
+           angleCX,
+           angleCY,
+           angleDX,
+           angleDY,
+           distanceAC,
+           distanceBD,
+           area;
     
     cout << "\n\n\n";
     
@@ -287,9 +293,10 @@ void trapezoidDisplayOutput(int trapChoice) {
     if (trapChoice1 == 1) {
         
     cout << setw(15) << "" << "The Area of a Trapezoid\n";
-    cout << setw(10) << "" << "______________________________\n\n";
-    cout << setw(10) << "" << "In order to calculate the area of a trapezoid,\n";
-    cout << setw(10) << "" << "please enter the following variables.\n\n";
+    cout << setw(10) << "" << "__________________________________\n\n";
+    cout << setw(10) << "" << "  In order to calculate the area\n";
+    cout << setw(10) << "" << "   of a trapezoid, please enter\n ";
+    cout << setw(10) << "" << "    the following variables.\n\n";
     cout << setw(10) << "" << "Enter height of trapezoid: ";
     cin >> height;
     
@@ -326,13 +333,127 @@ void trapezoidDisplayOutput(int trapChoice) {
     
     if (trapChoice1 == 2) {
         
-    cout << setw(15) << "" << "The Perimeter of a Trapezoid";
+    cout << setw(13) << "" << "The Height of a Trapezoid\n";
+    cout << setw(10) << "" << "__________________________________\n\n";
+    cout << setw(10) << "" << "  In order to calculate the height\n";
+    cout << setw(10) << "" << "    of a trapezoid, please enter\n ";
+    cout << setw(10) << "" << "      the following variables.\n\n";
+    cout << setw(10) << "" << "Enter area of trapezoid: ";
+    cin >> area;
+    
+    while (area < 0) {
+        cout << setw(10) << "" << "Please enter positive area: ";
+        cin >> area;
+    }
+    
+    cout << setw(10) << "" << "Enter left side of trapezoid: ";
+    cin >> sideA;
+    
+    while (sideA < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> sideA;
+    }
+    
+    cout << setw(10) << "" << "Enter left side of trapezoid: ";
+    cin >> sideB;
+    
+    while (sideB < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> sideB;
+    }
+    
+    height = trapezoidCalcHeight(area, sideA, sideB);
+    
+    cout << "\n\n";
+    
+    cout << setw(10) << "" << "The height is: " << height << " units.";
     
     }
     
     if (trapChoice1 == 3) {
         
-    cout << setw(15) << "" << "The Angles of a Trapezoid";
+    cout << setw(5) << "" << "         Calculate Distance \n";
+    cout << setw(10) << "" << "__________________________________\n\n";
+    cout << setw(10) << "" << "   Enter coordinates for the four\n";
+    cout << setw(10) << "" << "   angles to find the distance\n";
+    cout << setw(10) << "" << "   between AC and BD\n\n";
+    
+    cout << setw(10) << "" << "Enter x-coordinate for angle A: ";
+    cin >> angleAX;
+    
+    while (angleAX < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleAX;
+    }
+    
+    cout << setw(10) << "" << "Enter y-coordinate for angle A: ";
+    cin >> angleAY;
+    
+    while (angleAY < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleAY;
+    }
+    
+    cout << setw(10) << "" << "Enter x-coordinate for angle B: ";
+    cin >> angleBX;
+    
+    while (angleBX < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleBX;
+    }
+    
+    cout << setw(10) << "" << "Enter y-coordinate for angle B: ";
+    cin >> angleBY;
+    
+    while (angleBY < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleBY;
+    }
+  
+    cout << setw(10) << "" << "Enter x-coordinate for angle C: ";
+    cin >> angleCX;
+    
+    while (angleCX < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleCX;
+    }
+    
+    cout << setw(10) << "" << "Enter y-coordinate for angle C: ";
+    cin >> angleCY;
+    
+    while (angleCY < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleCY;
+    }
+    
+    cout << setw(10) << "" << "Enter x-coordinate for angle D: ";
+    cin >> angleDX;
+    
+    while (angleDX < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleDX;
+    }
+    
+    cout << setw(10) << "" << "Enter y-coordinate for angle D: ";
+    cin >> angleDY;
+    
+    while (angleDY < 0) {
+        cout << setw(10) << "" << "Please enter positive number: ";
+        cin >> angleDY;
+    }
+    
+    
+    
+    distanceAC = distanceFormula(angleAX, angleAY, angleCX, angleCY);
+    distanceBD = distanceFormula(angleBX, angleBY, angleDX, angleDY);
+    
+    cout << "\n\n";
+    
+    cout << setw(5) << "" << "The distance between angles AC is: " 
+            << distanceAC << " units.\n";
+    
+    cout << setw(5) << "" << "The distance between angles BD is: " 
+            << distanceBD << " units.";
     
     }
     
