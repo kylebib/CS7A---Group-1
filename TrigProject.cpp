@@ -33,140 +33,140 @@ void pause();
 void clearScreen();
 
 
-void   trapezoidMenu();
-int    trapezoidChoice();
+void trapezoidMenu();
+int trapezoidChoice();
 double trapezoidCalcArea(double, double, double);
 double trapezoidCalcPerimeter(double, double, double, double);
 double trapezoidCalcHeight(double, double, double);
-void   trapezoidDisplayOutput(int);
+void trapezoidDisplayOutput(int);
 
-void   circleMenu();
-int    circleChoice();
+void circleMenu();
+int circleChoice();
 double areaCircle(double);
 double circumference(double);
 double arcLength(double, double);
 double centerOfCircleX(double, double);
 double centerOfCircleY(double, double);
-void   circleDisplayOutput(int);
+void circleDisplayOutput(int);
 
 double triangleCalcDistance();
 double angToRad(double);
 double distanceFormula(double, double, double, double);
 
+void triangleMenu(int);
+void menuForRightTriangles(int);
+void menuforEqualateralTriangle(int);
+void menuforIsoscelesTriangle(int);
+void rightTriangleCalulations(double&, double&, double&);
+double calOfPythTheorem(double, double, double);
+double calcofLawofcosine(double, double, double, double);
+double calcofInverseCos(double, double, double, double);
+double CalcToFindAngleA(double, double, double);
+void lawOfCosineChart(double, double, double, double, double, double);
+double calofAreaofEQ(double, double);
+void areaOfanEqualateral(double, double);
+double areaOfIsosceles(double, double, double);
+void calcAreaOfIsosceles(double&, double&, double&);
+double formulaForCosine(double, double, double);
+double formulaForSine(double, double, double);
+double triangleCalcDistance(double, double, double, double, 
+        double, double, double, double, double);
+
 const double PI = 3.14159;
 
 int main() {
 
-	int choice,
+    int choice,
             triangleChoice,
             trapChoice,
             circChoice;
 
-	intro();
+    intro();
 
-	do {
+    do {
 
-		mainMenu();
+        mainMenu();
 
-		choice = getChoice();
+        choice = getChoice();
 
-		switch (choice) {
+        switch (choice) {
 
-			//Triangles
-		case 1:
-			do {
-				triangleChoice = getTriangleChoice();
+                //Triangles
+            case 1:
+                triangleMenu(choice);
+                break;
 
-				switch (triangleChoice) {
+                //Circles
+            case 2:
+                do {
+                    circleMenu();
 
-				case 1:
-					dummyMessage();
-					break;
-				case 2:
-					dummyMessage();
-					break;
-				case 3:
-					dummyMessage();
-					break;
-				default:
-					break;
-				}
+                    circChoice = circleChoice();
 
-			} while (triangleChoice != 4);
+                    switch (circChoice) {
 
-			break;
+                        case 1:
+                            circleDisplayOutput(circChoice);
+                            break;
+                        case 2:
+                            circleDisplayOutput(circChoice);
+                            break;
+                        case 3:
+                            circleDisplayOutput(circChoice);
+                            break;
+                        case 4:
+                            circleDisplayOutput(circChoice);
+                            break;
+                        default:
+                            break;
+                    }
+                } while (circChoice != 5);
 
-			//Circles
-		case 2:
-			do {
-				circleMenu();
-
-				circChoice = circleChoice();
-
-				switch (circChoice) {
-
-				case 1:
-					circleDisplayOutput(circChoice);
-					break;
-				case 2:
-					circleDisplayOutput(circChoice);
-					break;
-				case 3:
-					circleDisplayOutput(circChoice);
-					break;
-				case 4:
-					circleDisplayOutput(circChoice);
-					break;
-				default:
-					break;
-				}
-			} while (circChoice != 5);
-
-			break;
-			
-
-			//Trapezoids
-		case 3:
-			do {
-				trapezoidMenu();
-
-				trapChoice = trapezoidChoice();
-
-				switch (trapChoice) {
-
-				case 1:
-					trapezoidDisplayOutput(trapChoice);
-					break;
-				case 2:
-					trapezoidDisplayOutput(trapChoice);
-					break;
-				case 3:
-					trapezoidDisplayOutput(trapChoice);
-					break;
-				default:
-					break;
-				}
-
-			} while (trapChoice != 4);
-
-			break;
-
-		default:
-			break;
-		}
+                break;
 
 
-	} while (choice != 4);
+                //Trapezoids
+            case 3:
+                do {
+                    trapezoidMenu();
 
-	goodbyeMessage();
+                    trapChoice = trapezoidChoice();
 
-	return 0;
+                    switch (trapChoice) {
+
+                        case 1:
+                            trapezoidDisplayOutput(trapChoice);
+                            break;
+                        case 2:
+                            trapezoidDisplayOutput(trapChoice);
+                            break;
+                        case 3:
+                            trapezoidDisplayOutput(trapChoice);
+                            break;
+                        default:
+                            break;
+                    }
+
+                } while (trapChoice != 4);
+
+                break;
+
+            default:
+                break;
+        }
+
+
+    } while (choice != 4);
+
+    goodbyeMessage();
+
+    return 0;
 }
 
 void goodbyeMessage() {
 
-	cout << "\n\n\n";
-	cout << setw(10) << "" << "Thanks for using the Program, Goodbye\n\n";
+    cout << "\n\n\n";
+    cout << setw(10) << "" << "Thanks for using the Program, Goodbye\n\n";
 
 }
 
@@ -180,34 +180,34 @@ void goodbyeMessage() {
  *      @Postcondition:  This function does not return anything.            *
  ***************************************************************************/
 void intro() {
-	cout << setw(25) << "" << "WELCOME TO TRIG 2019 Ver. 2.0.0\n";
-	cout << setw(15) << "" << "____________________________________________________\n";
+    cout << setw(25) << "" << "WELCOME TO TRIG 2019 Ver. 2.0.0\n";
+    cout << setw(15) << "" << "____________________________________________________\n";
 
-	cout << "\n\n\n\n";
+    cout << "\n\n\n\n";
 
-	cout << setw(15) << "" << "       000000000000		000000000000	\n";
-	cout << setw(15) << "" << "	    0000000000000000	      0000000000000000	\n";
-	cout << setw(15) << "" << "	   000000000000000000	     000000000000000000	\n";
-	cout << setw(15) << "" << "	  00000000000000000000	    00000000000000000000\n";
-	cout << setw(15) << "" << "	 0000000000000000000000	   0000000000000000000000\n";
-	cout << setw(15) << "" << "	000000000000000000000000  000000000000000000000000\n";
-	cout << setw(15) << "" << "0000000000000000000000000000000000000000000000000000\n";
-	cout << setw(15) << "" << "000000000000000                       00000000000000\n";
-	cout << setw(15) << "" << "	00000000000000     Kyle Bibeault     0000000000000\n";
-	cout << setw(15) << "" << "	  000000000000     Theodis Brown     00000000000\n";
-	cout << setw(15) << "" << "	    0000000000     Ines Campos	     000000000	\n";
-	cout << setw(15) << "" << "	      00000000     Chris Flores      0000000	\n";
-	cout << setw(15) << "" << "	        000000     Luis Rodriguez    00000	\n";
-	cout << setw(15) << "" << "	          0000                       000	\n";
-	cout << setw(15) << "" << "	            00000000000000000000000000		\n";
-	cout << setw(15) << "" << "	              0000000000000000000000		\n";
-	cout << setw(15) << "" << "	                000000000000000000		\n";
-	cout << setw(15) << "" << "	                   0000000000000		\n";
-	cout << setw(15) << "" << "	                     000000000			\n";
-	cout << setw(15) << "" << "	                       00000			\n";
-	cout << setw(15) << "" << "	                         0	\n";
+    cout << setw(15) << "" << "       000000000000		000000000000	\n";
+    cout << setw(15) << "" << "	    0000000000000000	      0000000000000000	\n";
+    cout << setw(15) << "" << "	   000000000000000000	     000000000000000000	\n";
+    cout << setw(15) << "" << "	  00000000000000000000	    00000000000000000000\n";
+    cout << setw(15) << "" << "	 0000000000000000000000	   0000000000000000000000\n";
+    cout << setw(15) << "" << "	000000000000000000000000  000000000000000000000000\n";
+    cout << setw(15) << "" << "0000000000000000000000000000000000000000000000000000\n";
+    cout << setw(15) << "" << "000000000000000                       00000000000000\n";
+    cout << setw(15) << "" << "	00000000000000     Kyle Bibeault     0000000000000\n";
+    cout << setw(15) << "" << "	  000000000000     Theodis Brown     00000000000\n";
+    cout << setw(15) << "" << "	    0000000000     Ines Campos	     000000000	\n";
+    cout << setw(15) << "" << "	      00000000     Chris Flores      0000000	\n";
+    cout << setw(15) << "" << "	        000000     Luis Rodriguez    00000	\n";
+    cout << setw(15) << "" << "	          0000                       000	\n";
+    cout << setw(15) << "" << "	            00000000000000000000000000		\n";
+    cout << setw(15) << "" << "	              0000000000000000000000		\n";
+    cout << setw(15) << "" << "	                000000000000000000		\n";
+    cout << setw(15) << "" << "	                   0000000000000		\n";
+    cout << setw(15) << "" << "	                     000000000			\n";
+    cout << setw(15) << "" << "	                       00000			\n";
+    cout << setw(15) << "" << "	                         0	\n";
 
-	pause();
+    pause();
 
 }
 
@@ -224,18 +224,18 @@ void intro() {
  ***************************************************************************/
 void mainMenu() {
 
-	clearScreen();
+    clearScreen();
 
-	cout << "\n\n\n";
-	cout << setw(10) << "" << "	 TRIGONOMETRY VERSION 2.0.0\n";
-	cout << setw(10) << "" << "________________________________\n\n";
+    cout << "\n\n\n";
+    cout << setw(10) << "" << "	 TRIGONOMETRY VERSION 2.0.0\n";
+    cout << setw(10) << "" << "________________________________\n\n";
 
-	cout << setw(10) << "" << "1. Triangles\n";
-	cout << setw(10) << "" << "2. Circles\n";
-	cout << setw(10) << "" << "3. Trapezoids\n";
-	cout << setw(10) << "" << "4. Exit program\n\n";
+    cout << setw(10) << "" << "1. Triangles\n";
+    cout << setw(10) << "" << "2. Circles\n";
+    cout << setw(10) << "" << "3. Trapezoids\n";
+    cout << setw(10) << "" << "4. Exit program\n\n";
 
-	cout << setw(10) << "" << "Enter your Choice: ";
+    cout << setw(10) << "" << "Enter your Choice: ";
 }
 
 /********************************************************************************
@@ -251,13 +251,13 @@ void mainMenu() {
  *******************************************************************************/
 int getChoice() {
 
-	int choice;
-	cin >> choice;
-	while (choice < 1 || choice > 4) {
-		cout << "The only valid Choices are 1-4. Please re-enter: ";
-		cin >> choice;
-	}
-	return choice;
+    int choice;
+    cin >> choice;
+    while (choice < 1 || choice > 4) {
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
+        cin >> choice;
+    }
+    return choice;
 }
 
 /****************************************************************************
@@ -272,19 +272,19 @@ int getChoice() {
  ****************************************************************************/
 void dummyMessage() {
 
-	cout << setw(10) << "" << "This page has not yet been built\n";
-	pause();
+    cout << setw(10) << "" << "This page has not yet been built\n";
+    pause();
 }
 
 int getTriangleChoice() {
 
-	int triChoice;
-	cin >> triChoice;
-	while (triChoice < 1 || triChoice > 4) {
-		cout << "The only valid Choices are 1-4. Please re-enter: ";
-		cin >> triChoice;
-	}
-	return triChoice;
+    int triChoice;
+    cin >> triChoice;
+    while (triChoice < 1 || triChoice > 4) {
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
+        cin >> triChoice;
+    }
+    return triChoice;
 
 }
 
@@ -297,7 +297,7 @@ int getTriangleChoice() {
  *      @Postcondition: This function does not return anything.             *
  ****************************************************************************/
 void pause() {
-	system("pause");
+    system("pause");
 }
 
 /****************************************************************************
@@ -309,7 +309,7 @@ void pause() {
  *      @Postcondition: This function does not return anything.             *
  ****************************************************************************/
 void clearScreen() {
-	system("cls");
+    system("cls");
 }
 
 /****************************************************************************
@@ -325,19 +325,19 @@ void clearScreen() {
  ***************************************************************************/
 void circleMenu() {
 
-	clearScreen();
+    clearScreen();
 
-	cout << "\n\n\n";
-	cout << setw(10) << "" << "	 CIRCLES\n";
-	cout << setw(10) << "" << "_______________________________\n\n";
+    cout << "\n\n\n";
+    cout << setw(10) << "" << "	 CIRCLES\n";
+    cout << setw(10) << "" << "_______________________________\n\n";
 
-	cout << setw(10) << "" << "1. Calculate Area\n";
-	cout << setw(10) << "" << "2. Calculate Circumference\n";
-	cout << setw(10) << "" << "3. Calculate Arc Length\n";
-	cout << setw(10) << "" << "4. Calculate Center Of Circle\n";
-	cout << setw(10) << "" << "5. Go Back\n\n";
+    cout << setw(10) << "" << "1. Calculate Area\n";
+    cout << setw(10) << "" << "2. Calculate Circumference\n";
+    cout << setw(10) << "" << "3. Calculate Arc Length\n";
+    cout << setw(10) << "" << "4. Calculate Center Of Circle\n";
+    cout << setw(10) << "" << "5. Go Back\n\n";
 
-	cout << setw(10) << "" << "Enter your Choice: ";
+    cout << setw(10) << "" << "Enter your Choice: ";
 }
 
 /****************************************************************************
@@ -353,14 +353,14 @@ void circleMenu() {
  ***************************************************************************/
 int circleChoice() {
 
-	int circChoice;
-	cin >> circChoice;
+    int circChoice;
+    cin >> circChoice;
 
-	while (circChoice < 1 || circChoice > 5) {
-		cout << "The only valid Choices are 1-5. Please re-enter: ";
-		cin >> circChoice;
-	}
-	return circChoice; 
+    while (circChoice < 1 || circChoice > 5) {
+        cout << "The only valid Choices are 1-5. Please re-enter: ";
+        cin >> circChoice;
+    }
+    return circChoice;
 }
 
 /****************************************************************************
@@ -376,7 +376,7 @@ int circleChoice() {
  ***************************************************************************/
 double areaCircle(double radius) {
 
-	return PI * (radius * radius);
+    return PI * (radius * radius);
 
 }
 
@@ -393,7 +393,7 @@ double areaCircle(double radius) {
  ***************************************************************************/
 double circumference(double radius) {
 
-	return (2 * PI * radius); 
+    return (2 * PI * radius);
 
 }
 
@@ -410,8 +410,8 @@ double circumference(double radius) {
  *   @Postcondition: This function returns the arc length of the curve. 	*
  *******************************************************************************/
 double arcLength(double radius, double angle) {
-	
-	return (PI * 2 * radius) * (static_cast<double>(angle) / 360); 
+
+    return (PI * 2 * radius) * (static_cast<double> (angle) / 360);
 
 }
 
@@ -430,7 +430,7 @@ double arcLength(double radius, double angle) {
  *******************************************************************************/
 double centerOfCircleX(double x1, double x2) {
 
-	return (x1 + x2) / 2;
+    return (x1 + x2) / 2;
 }
 
 /********************************************************************************
@@ -449,160 +449,159 @@ double centerOfCircleX(double x1, double x2) {
  *******************************************************************************/
 double centerOfCircleY(double y1, double y2) {
 
-	return (y1 + y2) / 2;
+    return (y1 + y2) / 2;
 }
 
 /*************************************************************************************
-*		Function Description: circleDisplayOutput()			     *
-*										     *
-*	This Function is responsible for clearing the console window, displaying     *
-*	the user choosen option and providing the format necessary for each viable   *
-*	choice.									     *
-*				 						     *
-*	@Precondition:	This function takes an integer of the user's choice from the *
-*			circle submenu as an argument.		 		     *
-*								 		     *
-*	@Postcondition:	This function returns nothing.		 		     *
-*			 							     *
-**************************************************************************************/
+ *		Function Description: circleDisplayOutput()			     *
+ *										     *
+ *	This Function is responsible for clearing the console window, displaying     *
+ *	the user choosen option and providing the format necessary for each viable   *
+ *	choice.									     *
+ *				 						     *
+ *	@Precondition:	This function takes an integer of the user's choice from the *
+ *			circle submenu as an argument.		 		     *
+ *								 		     *
+ *	@Postcondition:	This function returns nothing.		 		     *
+ *			 							     *
+ **************************************************************************************/
 void circleDisplayOutput(int circChoice) {
 
-	clearScreen();
+    clearScreen();
 
-	cout << fixed << showpoint << setprecision(2);
+    cout << fixed << showpoint << setprecision(2);
 
-	int		circChoice1 = circChoice;	
-	double  arclength,
-			circumf,
-			radius,
-			centerX,
-			centerY,
-			angle,
-			area,
-			x1, y1,
-			x2, y2;
-			
+    int circChoice1 = circChoice;
+    double arclength,
+            circumf,
+            radius,
+            centerX,
+            centerY,
+            angle,
+            area,
+            x1, y1,
+            x2, y2;
 
-	cout << "\n\n\n";
 
-	if (circChoice1 == 1) {
+    cout << "\n\n\n";
 
-		cout << setw(15) << "" << "The Area of a Circle\n";
-		cout << setw(10) << "" << "______________________________________\n\n";
-		cout << setw(10) << "" << "  In order to calculate the area\n";
-		cout << setw(10) << "" << "  of a circle, please enter the\n";
-		cout << setw(10) << "" << "  following variable.\n\n";
+    if (circChoice1 == 1) {
 
-		cout << setw(10) << "" << "Please enter radius of the circle: ";
-		cin >> radius;
+        cout << setw(15) << "" << "The Area of a Circle\n";
+        cout << setw(10) << "" << "______________________________________\n\n";
+        cout << setw(10) << "" << "  In order to calculate the area\n";
+        cout << setw(10) << "" << "  of a circle, please enter the\n";
+        cout << setw(10) << "" << "  following variable.\n\n";
 
-		while (radius < 0) {
-			cout << setw(10) << "" << "Invalid Input!! Please re-enter a positive radius: ";
-			cin >> radius;
-		}
+        cout << setw(10) << "" << "Please enter radius of the circle: ";
+        cin >> radius;
 
-		area = areaCircle(radius);
+        while (radius < 0) {
+            cout << setw(10) << "" << "Invalid Input!! Please re-enter a positive radius: ";
+            cin >> radius;
+        }
 
-		cout << "\n\n";
+        area = areaCircle(radius);
 
-		cout << setw(10) << "" << "The area of the cicle is: " << area << " units squared.\n\n";
+        cout << "\n\n";
 
-	}
+        cout << setw(10) << "" << "The area of the cicle is: " << area << " units squared.\n\n";
 
-	if (circChoice1 == 2) {
+    }
 
-		cout << setw(15) << "" << "The Circumference of a Circle\n";
-		cout << setw(10) << "" << "___________________________________________\n\n";
-		cout << setw(10) << "" << "  In order to calculate the Circumference\n";
-		cout << setw(10) << "" << "  of a circle, please enter the following\n";
-		cout << setw(10) << "" << "  variable.\n\n";
+    if (circChoice1 == 2) {
 
-		cout << setw(10) << "" << "Please enter radius of the circle: ";
-		cin >> radius;
+        cout << setw(15) << "" << "The Circumference of a Circle\n";
+        cout << setw(10) << "" << "___________________________________________\n\n";
+        cout << setw(10) << "" << "  In order to calculate the Circumference\n";
+        cout << setw(10) << "" << "  of a circle, please enter the following\n";
+        cout << setw(10) << "" << "  variable.\n\n";
 
-		while (radius < 0) {
-			cout << setw(10) << "" << "Invalid Input!! Please re-enter a positive radius: ";
-			cin >> radius;
-		}
+        cout << setw(10) << "" << "Please enter radius of the circle: ";
+        cin >> radius;
 
-		circumf = circumference(radius);
+        while (radius < 0) {
+            cout << setw(10) << "" << "Invalid Input!! Please re-enter a positive radius: ";
+            cin >> radius;
+        }
 
-		cout << "\n\n";
+        circumf = circumference(radius);
 
-		cout << setw(10) << "" << "The circumference of the cicle is: " << circumf << " units.\n\n";
+        cout << "\n\n";
 
-	}
+        cout << setw(10) << "" << "The circumference of the cicle is: " << circumf << " units.\n\n";
 
-	if (circChoice1 == 3) {
+    }
 
-		cout << setw(15) << "" << "The Arc Length of curve \n";
-		cout << setw(10) << "" << "________________________________________\n\n";
-		cout << setw(10) << "" << "  In order to calculate the Arc Length\n";
-		cout << setw(10) << "" << "  of a curve that lies on a circle,\n";
-		cout << setw(10) << "" << "  please enter the needed variables.\n\n";
+    if (circChoice1 == 3) {
 
-		cout << fixed << showpoint << setprecision(2);
+        cout << setw(15) << "" << "The Arc Length of curve \n";
+        cout << setw(10) << "" << "________________________________________\n\n";
+        cout << setw(10) << "" << "  In order to calculate the Arc Length\n";
+        cout << setw(10) << "" << "  of a curve that lies on a circle,\n";
+        cout << setw(10) << "" << "  please enter the needed variables.\n\n";
 
-		cout << setw(10) << "" << "Please enter radius of the circle: ";
-		cin >> radius;
+        cout << fixed << showpoint << setprecision(2);
 
-		while (radius < 0) {
-			cout << setw(10) << "" << "Invalid Input!! Please re-enter a positive radius: ";
-			cin >> radius;
-		}
+        cout << setw(10) << "" << "Please enter radius of the circle: ";
+        cin >> radius;
 
-		cout << setw(10) << "" << "Please enter angle in degrees from positive x-axis: ";
-		cin >> angle; 
+        while (radius < 0) {
+            cout << setw(10) << "" << "Invalid Input!! Please re-enter a positive radius: ";
+            cin >> radius;
+        }
 
-		while (angle < 0) {
-			cout << setw(10) << "" << "Angle cannot be formed."
-									  "Please re-enter a positive angle: ";
-			cin >> angle; 
-		}
-	
+        cout << setw(10) << "" << "Please enter angle in degrees from positive x-axis: ";
+        cin >> angle;
 
-		arclength = arcLength(radius, angle);
+        while (angle < 0) {
+            cout << setw(10) << "" << "Angle cannot be formed."
+                    "Please re-enter a positive angle: ";
+            cin >> angle;
+        }
 
-		cout << "\n\n";
 
-		cout << setw(10) << "" << "The Arc Length of the curve is: " << arclength << " units.\n\n";
+        arclength = arcLength(radius, angle);
 
-	}
-	
-	if (circChoice1 == 4) {
+        cout << "\n\n";
 
-		cout << setw(15) << "" << "The Center of a Circle\n";
-		cout << setw(10) << "" << "________________________________________\n\n";
-		cout << setw(10) << "" << "  In order to calculate the Center of\n";
-		cout << setw(10) << "" << "  a circle, please enter the following\n";
-		cout << setw(10) << "" << "  coordinates that represent the \n";
-		cout << setw(10) << "" << "  circle's diameter.\n\n";
+        cout << setw(10) << "" << "The Arc Length of the curve is: " << arclength << " units.\n\n";
 
-		cout << fixed << showpoint << setprecision(2);
+    }
 
-		cout << setw(10) << "" << "Please enter the x-coordinate of the First point: ";
-		cin >> x1;
+    if (circChoice1 == 4) {
 
-		cout << setw(10) << "" << "Please enter the y-coordinate of the First point: ";
-		cin >> y1;
+        cout << setw(15) << "" << "The Center of a Circle\n";
+        cout << setw(10) << "" << "________________________________________\n\n";
+        cout << setw(10) << "" << "  In order to calculate the Center of\n";
+        cout << setw(10) << "" << "  a circle, please enter the following\n";
+        cout << setw(10) << "" << "  coordinates that represent the \n";
+        cout << setw(10) << "" << "  circle's diameter.\n\n";
 
-		cout << setw(10) << "" << "Please enter the x-coordinate of the Second point: ";
-		cin >> x2;
+        cout << fixed << showpoint << setprecision(2);
 
-		cout << setw(10) << "" << "Please enter the y-coordinate of the Second point: ";
-		cin >> y2;
-		
-		centerX = centerOfCircleX(x1, x2);
-		centerY = centerOfCircleY(y1, y2);
+        cout << setw(10) << "" << "Please enter the x-coordinate of the First point: ";
+        cin >> x1;
 
-		cout << "\n\n";
+        cout << setw(10) << "" << "Please enter the y-coordinate of the First point: ";
+        cin >> y1;
 
-		cout << setw(10) << "" << "The Center of the circle is (" << centerX << " , " << centerY << ")";
-	}
+        cout << setw(10) << "" << "Please enter the x-coordinate of the Second point: ";
+        cin >> x2;
 
-	pause();
+        cout << setw(10) << "" << "Please enter the y-coordinate of the Second point: ";
+        cin >> y2;
+
+        centerX = centerOfCircleX(x1, x2);
+        centerY = centerOfCircleY(y1, y2);
+
+        cout << "\n\n";
+
+        cout << setw(10) << "" << "The Center of the circle is (" << centerX << " , " << centerY << ")";
+    }
+
+    pause();
 }
-
 
 /****************************************************************************
  *                  FUNCTION DESCRIPTION trapezoidMenu()                    *
@@ -616,18 +615,18 @@ void circleDisplayOutput(int circChoice) {
  ****************************************************************************/
 void trapezoidMenu() {
 
-	clearScreen();
+    clearScreen();
 
-	cout << "\n\n\n";
-	cout << setw(10) << "" << "	 TRAPEZOIDS\n";
-	cout << setw(10) << "" << "________________\n\n";
+    cout << "\n\n\n";
+    cout << setw(10) << "" << "	 TRAPEZOIDS\n";
+    cout << setw(10) << "" << "________________\n\n";
 
-	cout << setw(10) << "" << "1. Calculate Area\n";
-	cout << setw(10) << "" << "2. Calculate Height\n";
-	cout << setw(10) << "" << "3. Calculate Distance\n";
-	cout << setw(10) << "" << "4. Go Back\n\n";
+    cout << setw(10) << "" << "1. Calculate Area\n";
+    cout << setw(10) << "" << "2. Calculate Height\n";
+    cout << setw(10) << "" << "3. Calculate Distance\n";
+    cout << setw(10) << "" << "4. Go Back\n\n";
 
-	cout << setw(10) << "" << "Enter your Choice: ";
+    cout << setw(10) << "" << "Enter your Choice: ";
 
 }
 
@@ -645,13 +644,13 @@ void trapezoidMenu() {
  ****************************************************************************/
 int trapezoidChoice() {
 
-	int trapChoice;
-	cin >> trapChoice;
-	while (trapChoice < 1 || trapChoice > 4) {
-		cout << "The only valid Choices are 1-4. Please re-enter: ";
-		cin >> trapChoice;
-	}
-	return trapChoice;
+    int trapChoice;
+    cin >> trapChoice;
+    while (trapChoice < 1 || trapChoice > 4) {
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
+        cin >> trapChoice;
+    }
+    return trapChoice;
 
 }
 
@@ -667,7 +666,7 @@ int trapezoidChoice() {
  ****************************************************************************/
 double trapezoidCalcArea(double height, double sideA, double sideB) {
 
-	return ((sideA + sideB) / 2) * height;
+    return ((sideA + sideB) / 2) * height;
 
 }
 
@@ -683,7 +682,7 @@ double trapezoidCalcArea(double height, double sideA, double sideB) {
  ****************************************************************************/
 double trapezoidCalcHeight(double area, double sideA, double sideB) {
 
-	return 2 * (area / (sideA + sideB));
+    return 2 * (area / (sideA + sideB));
 
 }
 
@@ -700,260 +699,811 @@ double trapezoidCalcHeight(double area, double sideA, double sideB) {
  ****************************************************************************/
 void trapezoidDisplayOutput(int trapChoice) {
 
-	clearScreen();
+    clearScreen();
 
-	cout << fixed << showpoint << setprecision(2);
+    cout << fixed << showpoint << setprecision(2);
 
-	int    trapChoice1 = trapChoice;
-	double height,
-	       sideA,
-               sideB,
-               angleAX,
-               angleAY,
-               angleBX,
-               angleBY,
-               angleCX,
-               angleCY,
-               angleDX,
-               angleDY,
-               distanceAC,
-               distanceBD,
-               area;
+    int trapChoice1 = trapChoice;
+    double height,
+            sideA,
+            sideB,
+            angleAX,
+            angleAY,
+            angleBX,
+            angleBY,
+            angleCX,
+            angleCY,
+            angleDX,
+            angleDY,
+            distanceAC,
+            distanceBD,
+            area;
 
-	cout << "\n\n\n";
-
-
-	if (trapChoice1 == 1) {
-
-		cout << setw(15) << "" << "The Area of a Trapezoid\n";
-		cout << setw(10) << "" << "__________________________________\n\n";
-		cout << setw(10) << "" << "  In order to calculate the area\n";
-		cout << setw(10) << "" << "   of a trapezoid, please enter\n ";
-		cout << setw(10) << "" << "    the following variables.\n\n";
-                
-                cout << setw(17) << "" << " A _____________ B\n";
-                cout << setw(17) << "" << "  /     |       \\\n";
-                cout << setw(16) << "" << "a /      |h       \\ b\n";
-                cout << setw(16) << "" << " /_______|_________\\\n";
-                cout << setw(15) << "" << "C                     D\n\n";
-                
-		cout << setw(10) << "" << "Enter height of trapezoid: ";
-		cin >> height;
-
-		while (height < 0) {
-			cout << setw(10) << "" << "Please enter positive height: ";
-			cin >> height;
-		}
-
-		cout << setw(10) << "" << "Enter side a of trapezoid: ";
-		cin >> sideA;
-
-		while (sideA < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> sideA;
-		}
-
-		cout << setw(10) << "" << "Enter side b of trapezoid: ";
-		cin >> sideB;
-
-		while (sideB < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> sideB;
-		}
-
-		area = trapezoidCalcArea(height, sideA, sideB);
-
-		cout << "\n\n";
-
-		cout << setw(10) << "" << "The area is: " << area << " units squared.";
+    cout << "\n\n\n";
 
 
-	}
+    if (trapChoice1 == 1) {
+
+        cout << setw(15) << "" << "The Area of a Trapezoid\n";
+        cout << setw(10) << "" << "__________________________________\n\n";
+        cout << setw(10) << "" << "  In order to calculate the area\n";
+        cout << setw(10) << "" << "   of a trapezoid, please enter\n ";
+        cout << setw(10) << "" << "    the following variables.\n\n";
+
+        cout << setw(17) << "" << " A _____________ B\n";
+        cout << setw(17) << "" << "  /     |       \\\n";
+        cout << setw(16) << "" << "a /      |h       \\ b\n";
+        cout << setw(16) << "" << " /_______|_________\\\n";
+        cout << setw(15) << "" << "D                     C\n\n";
+
+        cout << setw(10) << "" << "Enter height of trapezoid: ";
+        cin >> height;
+
+        while (height < 0) {
+            cout << setw(10) << "" << "Please enter positive height: ";
+            cin >> height;
+        }
+
+        cout << setw(10) << "" << "Enter side a of trapezoid: ";
+        cin >> sideA;
+
+        while (sideA < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> sideA;
+        }
+
+        cout << setw(10) << "" << "Enter side b of trapezoid: ";
+        cin >> sideB;
+
+        while (sideB < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> sideB;
+        }
+
+        area = trapezoidCalcArea(height, sideA, sideB);
+
+        cout << "\n\n";
+
+        cout << setw(10) << "" << "The area is: " << area << " units squared.";
 
 
-	if (trapChoice1 == 2) {
-
-		cout << setw(13) << "" << "The Height of a Trapezoid\n";
-		cout << setw(10) << "" << "__________________________________\n\n";
-		cout << setw(10) << "" << "  In order to calculate the height\n";
-		cout << setw(10) << "" << "    of a trapezoid, please enter\n ";
-		cout << setw(10) << "" << "      the following variables.\n\n";
-                
-                cout << setw(17) << "" << " A _____________ B\n";
-                cout << setw(17) << "" << "  /     |       \\\n";
-                cout << setw(16) << "" << "a /      |h       \\ b\n";
-                cout << setw(16) << "" << " /_______|_________\\\n";
-                cout << setw(15) << "" << "C                     D\n\n";
-                
-		cout << setw(10) << "" << "Enter area of trapezoid: ";
-		cin >> area;
-
-		while (area < 0) {
-			cout << setw(10) << "" << "Please enter positive area: ";
-			cin >> area;
-		}
-
-		cout << setw(10) << "" << "Enter side a of trapezoid: ";
-		cin >> sideA;
-
-		while (sideA < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> sideA;
-		}
-
-		cout << setw(10) << "" << "Enter side b of trapezoid: ";
-		cin >> sideB;
-
-		while (sideB < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> sideB;
-		}
-
-		height = trapezoidCalcHeight(area, sideA, sideB);
-
-		cout << "\n\n";
-
-		cout << setw(10) << "" << "The height is: " << height << " units.";
-
-	}
-
-	if (trapChoice1 == 3) {
-
-		cout << setw(5) << "" << "         Calculate Distance \n";
-		cout << setw(10) << "" << "__________________________________\n\n";
-		cout << setw(10) << "" << "   Enter coordinates for the four\n";
-		cout << setw(10) << "" << "   angles to find the distance\n";
-		cout << setw(10) << "" << "   between AC and BD\n\n";
-                
-                cout << setw(17) << "" << " A _____________ B\n";
-                cout << setw(17) << "" << "  /     |       \\\n";
-                cout << setw(16) << "" << "a /      |h       \\ b\n";
-                cout << setw(16) << "" << " /_______|_________\\\n";
-                cout << setw(15) << "" << "C                     D\n\n";
-                
-		cout << setw(10) << "" << "Enter x-coordinate for angle A: ";
-		cin >> angleAX;
-
-		while (angleAX < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleAX;
-		}
-
-		cout << setw(10) << "" << "Enter y-coordinate for angle A: ";
-		cin >> angleAY;
-
-		while (angleAY < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleAY;
-		}
-
-		cout << setw(10) << "" << "Enter x-coordinate for angle B: ";
-		cin >> angleBX;
-
-		while (angleBX < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleBX;
-		}
-
-		cout << setw(10) << "" << "Enter y-coordinate for angle B: ";
-		cin >> angleBY;
-
-		while (angleBY < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleBY;
-		}
-
-		cout << setw(10) << "" << "Enter x-coordinate for angle C: ";
-		cin >> angleCX;
-
-		while (angleCX < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleCX;
-		}
-
-		cout << setw(10) << "" << "Enter y-coordinate for angle C: ";
-		cin >> angleCY;
-
-		while (angleCY < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleCY;
-		}
-
-		cout << setw(10) << "" << "Enter x-coordinate for angle D: ";
-		cin >> angleDX;
-
-		while (angleDX < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleDX;
-		}
-
-		cout << setw(10) << "" << "Enter y-coordinate for angle D: ";
-		cin >> angleDY;
-
-		while (angleDY < 0) {
-			cout << setw(10) << "" << "Please enter positive number: ";
-			cin >> angleDY;
-		}
+    }
 
 
+    if (trapChoice1 == 2) {
 
-		distanceAC = distanceFormula(angleAX, angleCX, angleAY, angleCY);
-		distanceBD = distanceFormula(angleBX, angleDX, angleBY, angleDY);
+        cout << setw(13) << "" << "The Height of a Trapezoid\n";
+        cout << setw(10) << "" << "__________________________________\n\n";
+        cout << setw(10) << "" << "  In order to calculate the height\n";
+        cout << setw(10) << "" << "    of a trapezoid, please enter\n ";
+        cout << setw(10) << "" << "      the following variables.\n\n";
 
-		cout << "\n\n";
+        cout << setw(17) << "" << " A _____________ B\n";
+        cout << setw(17) << "" << "  /     |       \\\n";
+        cout << setw(16) << "" << "a /      |h       \\ b\n";
+        cout << setw(16) << "" << " /_______|_________\\\n";
+        cout << setw(15) << "" << "D                     C\n\n";
 
-		cout << setw(5) << "" << "The distance between angles AC is: "
-			<< distanceAC << " units.\n";
+        cout << setw(10) << "" << "Enter area of trapezoid: ";
+        cin >> area;
 
-		cout << setw(5) << "" << "The distance between angles BD is: "
-			<< distanceBD << " units.";
+        while (area < 0) {
+            cout << setw(10) << "" << "Please enter positive area: ";
+            cin >> area;
+        }
 
-	}
+        cout << setw(10) << "" << "Enter side a of trapezoid: ";
+        cin >> sideA;
 
-	pause();
+        while (sideA < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> sideA;
+        }
+
+        cout << setw(10) << "" << "Enter side b of trapezoid: ";
+        cin >> sideB;
+
+        while (sideB < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> sideB;
+        }
+
+        height = trapezoidCalcHeight(area, sideA, sideB);
+
+        cout << "\n\n";
+
+        cout << setw(10) << "" << "The height is: " << height << " units.";
+
+    }
+
+    if (trapChoice1 == 3) {
+
+        cout << setw(5) << "" << "         Calculate Distance \n";
+        cout << setw(10) << "" << "__________________________________\n\n";
+        cout << setw(10) << "" << "   Enter coordinates for the four\n";
+        cout << setw(10) << "" << "   angles to find the distance\n";
+        cout << setw(10) << "" << "   between AC and BD\n\n";
+
+        cout << setw(17) << "" << " A _____________ B\n";
+        cout << setw(17) << "" << "  /     |       \\\n";
+        cout << setw(16) << "" << "a /      |h       \\ b\n";
+        cout << setw(16) << "" << " /_______|_________\\\n";
+        cout << setw(15) << "" << "D                     C\n\n";
+
+        cout << setw(10) << "" << "Enter x-coordinate for angle A: ";
+        cin >> angleAX;
+
+        while (angleAX < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleAX;
+        }
+
+        cout << setw(10) << "" << "Enter y-coordinate for angle A: ";
+        cin >> angleAY;
+
+        while (angleAY < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleAY;
+        }
+
+        cout << setw(10) << "" << "Enter x-coordinate for angle B: ";
+        cin >> angleBX;
+
+        while (angleBX < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleBX;
+        }
+
+        cout << setw(10) << "" << "Enter y-coordinate for angle B: ";
+        cin >> angleBY;
+
+        while (angleBY < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleBY;
+        }
+
+        cout << setw(10) << "" << "Enter x-coordinate for angle C: ";
+        cin >> angleCX;
+
+        while (angleCX < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleCX;
+        }
+
+        cout << setw(10) << "" << "Enter y-coordinate for angle C: ";
+        cin >> angleCY;
+
+        while (angleCY < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleCY;
+        }
+
+        cout << setw(10) << "" << "Enter x-coordinate for angle D: ";
+        cin >> angleDX;
+
+        while (angleDX < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleDX;
+        }
+
+        cout << setw(10) << "" << "Enter y-coordinate for angle D: ";
+        cin >> angleDY;
+
+        while (angleDY < 0) {
+            cout << setw(10) << "" << "Please enter positive number: ";
+            cin >> angleDY;
+        }
+
+
+
+        distanceAC = distanceFormula(angleAX, angleCX, angleAY, angleCY);
+        distanceBD = distanceFormula(angleBX, angleDX, angleBY, angleDY);
+
+        cout << "\n\n";
+
+        cout << setw(5) << "" << "The distance between angles AC is: "
+                << distanceAC << " units.\n";
+
+        cout << setw(5) << "" << "The distance between angles BD is: "
+                << distanceBD << " units.";
+
+    }
+
+    pause();
 
 }
 
 
 //CHRIS FLORES
+
 /********************************************************************************
-*							distanceFormula()									*
-*			This function calculates the distance between a set of ordered		*
-*			pairs.																*
-*																				*
-*			Precondition: The user inputs 4 values which will be used as		*
-*			arguments.															*
-*																				*
-*			Postcondition: This function returns the distance by using			*
-*			distance formula													*
-*																				*
-********************************************************************************/
+ *							distanceFormula()									*
+ *			This function calculates the distance between a set of ordered		*
+ *			pairs.																*
+ *																				*
+ *			Precondition: The user inputs 4 values which will be used as		*
+ *			arguments.															*
+ *																				*
+ *			Postcondition: This function returns the distance by using			*
+ *			distance formula													*
+ *																				*
+ ********************************************************************************/
 double distanceFormula(double x1, double x2, double y1, double y2) {
-	return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+    return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
 }
 
 /********************************************************************************
-*								  angToRad()
-*				This function converts angles to radians by multiplying theta
-*				by PI over 180.
-*
-*				Precondition:
-*
-*				Postcondition:
-*
-*
-*********************************************************************************/
+ *								  angToRad()
+ *				This function converts angles to radians by multiplying theta
+ *				by PI over 180.
+ *
+ *				Precondition:
+ *
+ *				Postcondition:
+ *
+ *
+ *********************************************************************************/
 double angToRad(double angle) {
-	return (angle * PI) / 180;	// Pending variable name for angle 
+    return (angle * PI) / 180; // Pending variable name for angle 
 }
 
 /********************************************************************************
-*							triangleCalcDistance()
-*				This function
-*
-*
-*				Precondition:
-*
-*				Postcondition:
-*
-********************************************************************************/
+ *							triangleCalcDistance()
+ *				This function
+ *
+ *
+ *				Precondition:
+ *
+ *				Postcondition:
+ *
+ ********************************************************************************/
+
+
+void triangleMenu(int choice) {
+    do {
+        system("cls");
+        cout << endl << endl << endl;
+        cout << setw(10) << "" << "     TRIANGLE MENU" << endl;
+        cout << setw(10) << "" << "----------------------------" << endl;
+        cout << setw(10) << "" << "1. Right and law of Triangles " << endl;
+        cout << setw(10) << "" << "2. EqualLateral Triangles " << endl;
+        cout << setw(10) << "" << "3. Isosceles Triangles" << endl;
+        cout << setw(10) << "" << "4. Exit back to main menu" << endl;
+        cout << endl;
+        cout << setw(10) << "" << "Enter Your Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            menuForRightTriangles(choice);
+        }
+        if (choice == 2) {
+            menuforEqualateralTriangle(choice);
+        }
+        if (choice == 3) {
+            menuforIsoscelesTriangle(choice);
+        }
+        if (choice == 4) {
+            break;
+        }
+        if (choice < 0 || choice > 4) {
+
+            while (choice < 0 || choice > 4) {
+                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
+                cout << endl;
+                cout << setw(10) << "" << "press 1, 2, 3, or 4 to go back to 'Enter Your Choice:': ";
+                cin >> choice;
+            }
+        }
+
+    } while (choice != 4);
+}
+
+void menuForRightTriangles(int choice) {
+    cout << fixed << showpoint << setprecision(3) << endl;
+    double leg1, leg2, hyp;
+    double a, b, c, A, B, C, x1, y1, x2, y2, x3, y3, side_A, side_B, side_C;
+
+
+    do {
+        system("cls");
+        cout << endl << endl << endl;
+        cout << setw(10) << "" << "RIGHT AND LAWS OF TRIANGLE MENU" << endl;
+        cout << setw(10) << "" << "----------------------------" << endl;
+        cout << setw(10) << "" << "1. Right Triangle(Pythagorean Theorem)" << endl;
+        cout << setw(10) << "" << "2. Law of Cosine Calculation" << endl;
+        cout << setw(10) << "" << "3. Distance Formula for Triangle Calculation" << endl;
+        cout << setw(10) << "" << "4. Calculating Sine" << endl;
+        cout << setw(10) << "" << "5. Calculating cosine" << endl;
+        cout << setw(10) << "" << "6. Calculating Tangent" << endl;
+        cout << setw(10) << "" << "7. Exit Program to main Triangle Menu" << endl;
+
+
+        cout << endl;
+        cout << setw(10) << "" << "Enter Your Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            //calOfPythTheorem();
+            rightTriangleCalulations(leg1, leg2, hyp);
+
+
+        }
+        if (choice == 2) {
+            lawOfCosineChart(a, b, c, A, B, C);
+        }
+        if (choice == 3) {
+            triangleCalcDistance(x1, y1, x2, y2, x3, y3, side_A, side_B, side_C);
+        }
+        if (choice == 7) {
+            triangleMenu(choice);
+        }
+
+        if (choice < 0 || choice > 4) {
+
+
+
+            while (choice < 0 || choice > 4) {
+                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
+                cout << endl;
+                cout << setw(10) << "" << "press 4 to go back to Enter Choice: ";
+                cin >> choice;
+            }
+        }
+
+
+    } while (choice != 4);
+
+
+
+}
+
+void menuforEqualateralTriangle(int choice) {
+    int A, a;
+
+    do {
+        system("cls");
+        cout << endl << endl << endl;
+        cout << setw(10) << "" << "EQUALATERAL TRIANGLE MENU" << endl;
+        cout << setw(10) << "" << "----------------------------" << endl;
+        cout << setw(10) << "" << "1.Area of EQ Triangle " << endl;
+        cout << setw(10) << "" << "2.Finding the height of an EQ Triangle " << endl;
+        cout << setw(10) << "" << "3. " << endl;
+        cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
+        cout << endl;
+        cout << setw(10) << "" << "Enter Your Choice: ";
+        cin >> choice;
+
+
+        if (choice == 4) {
+            triangleMenu(choice);
+        }
+        if (choice == 1) {
+            areaOfanEqualateral(A, a);
+        }
+        if (choice < 0 || choice > 4) {
+
+
+
+            while (choice < 0 || choice > 4) {
+                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
+                cout << endl;
+                cout << setw(10) << "" << "press 1, 2, 3, or 4 to go back to 'Enter your Choice:' ";
+                cin >> choice;
+            }
+        }
+
+
+
+
+    } while (choice == 1 || choice == 2 || choice == 3 || choice == 4);
+
+
+
+}
+
+void menuforIsoscelesTriangle(int choice) {
+    do {
+        system("cls");
+        double b, h, A;
+        cout << endl << endl << endl;
+        cout << setw(10) << "" << "ISOSCELES TRIANGLE MENU" << endl;
+        cout << setw(10) << "" << "----------------------------" << endl;
+        cout << setw(10) << "" << "1.Area of an Isosceles Triangle " << endl;
+        cout << setw(10) << "" << "2.Finding Side a1 and a2 of an Isosceles Triangle " << endl;
+        cout << setw(10) << "" << "3.Find The height of the Isosceles Triangle " << endl;
+        cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
+        cout << endl;
+        cout << setw(10) << "" << "Enter Your Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            calcAreaOfIsosceles(b, h, A);
+        }
+        if (choice == 4) {
+            triangleMenu(choice);
+        }
+        if (choice < 0 || choice > 4) {
+
+
+
+            while (choice < 0 || choice > 4) {
+                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
+                cout << endl;
+                cout << setw(10) << "" << "press 1, 2, 3, or 4 to go back to 'Enter your Choice:' ";
+                cin >> choice;
+            }
+        }
+
+
+    } while (choice == 1 || choice == 2 || choice == 3 || choice == 4);
+
+}
+
+void rightTriangleCalulations(double &leg_a, double &leg_b, double &hyp) {
+    double choice, leg1, leg2;
+
+    clearScreen();
+
+
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "Right Triangle(Pythagorean Theorem)" << endl;
+    cout << setw(10) << "" << "-----------------------------------" << endl;
+    cout << setw(10) << "" << "          |\\     " << endl;
+    cout << setw(10) << "" << "          | \\   " << endl;
+    cout << setw(10) << "" << "          |  \\   " << endl;
+    cout << setw(10) << "" << "          |   \\  " << endl;
+    cout << setw(10) << "" << "          |    \\      " << endl;
+    cout << setw(10) << "" << " opposite |     \\  Hypotnuse    " << endl;
+    cout << setw(10) << "" << "          |      \\        " << endl;
+    cout << setw(10) << "" << "          |       \\       " << endl;
+    cout << setw(10) << "" << "          |        \\      " << endl;
+    cout << setw(10) << "" << "          |_        \\     " << endl;
+    cout << setw(10) << "" << "          |_|________\\     " << endl << endl;
+    cout << setw(10) << "" << "             Adjacent      " << endl;
+    cout << setw(10) << "" << "-----------------------------------------------" << endl;
+    cout << setw(10) << "" << "Enter The Length of the Adjacent side";
+    cin >> leg_a;
+    if (leg_a <= 0) {
+
+        while (leg_a <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> leg_a;
+        }
+
+
+    }
+
+    cout << setw(10) << "" << "Enter the length of Leg b: ";
+    cin >> leg_b;
+    if (leg_b <= 0) {
+        while (leg_b <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> leg_b;
+        }
+
+    }
+
+    cout << endl << endl;
+
+    cout << setw(10) << "" << "The Answer is: " << calOfPythTheorem(leg_a, leg_b, hyp) << endl << endl;
+
+    cout << endl;
+
+    do {
+        cout << setw(10) << "" << "Press 4 to go back to the right Right Triangle Menu or 1 to try again: ";
+        cin >> choice;
+
+        if (choice == 4) {
+            menuForRightTriangles(choice);
+        }
+        if (choice == 1) {
+            rightTriangleCalulations(leg1, leg2, hyp);
+        }
+
+        if (choice != 4) {
+            cout << endl;
+            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
+            cout << endl;
+        }
+    } while (choice != 4);
+
+    pause();
+
+}
+
+double calOfPythTheorem(double leg_a, double leg_b, double hyp) {
+    return hyp = sqrt(pow(leg_a, 2) + pow(leg_b, 2));
+}
+
+double calcofLawofcosine(double a, double b, double c, double C) {
+    return c = sqrt(pow(a, 2) + pow(b, 2) - (2 * a * b * cos(PI * C / 180)));
+}
+
+double calcofInverseCos(double a, double b, double c, double B) {
+    return B = ((acos((pow(b, 2) - (pow(a, 2) + pow(c, 2)))
+            / (-2 * a * c))) * 180) / PI;
+}
+
+double CalcToFindAngleA(double A, double B, double C) {
+    return A = 180 - (B + C);
+}
+
+void lawOfCosineChart(double a, double b, double c, double A, double B, double C) {
+
+    system("cls");
+    double choice;
+    cout << endl << endl << endl;
+
+
+    cout << setw(15) << "" << "LAW OF COSINE" << endl;
+    cout << setw(10) << "" << "-------------------------" << endl;
+    cout << setw(10) << "" << "           A \n " << endl;
+    cout << setw(10) << "" << "           /\\" << endl;
+    cout << setw(10) << "" << "          /  \\" << endl;
+    cout << setw(10) << "" << "         /    \\  " << endl;
+    cout << setw(10) << "" << "      b /      \\ c" << endl;
+    cout << setw(10) << "" << "       /        \\" << endl;
+    cout << setw(10) << "" << "      /          \\" << endl;
+    cout << setw(10) << "" << "     /____________\\" << endl;
+    cout << setw(10) << "" << "    C       a      B" << endl;
+    cout << endl;
+
+    cout << setw(10) << "" << "Enter The length of side a: ";
+    cin >> a;
+    if (a <= 0) {
+
+        while (a <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> a;
+        }
+
+
+    }
+
+    cout << endl;
+    cout << setw(10) << "" << "Enter Length of side b: ";
+    cin >> b;
+
+    if (b <= 0) {
+
+        while (b <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> b;
+        }
+
+
+    }
+    cout << endl;
+    cout << setw(10) << "" << "Enter side c between the angles of A and B: ";
+    cin >> C;
+
+    if (C <= 0) {
+
+        while (C <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> C;
+        }
+
+
+    }
+
+    c = calcofLawofcosine(a, b, c, C);
+    B = calcofInverseCos(a, b, c, B);
+    A = CalcToFindAngleA(A, B, C);
+
+
+
+    cout << setw(10) << "" << "The length of side c is: " << c << endl;
+    cout << setw(10) << "" << "__________________________________________" << endl;
+    cout << endl;
+    cout << setw(10) << "" << " The remaining angles are <A and <B and they are " << endl;
+    cout << setw(10) << "" << "angle B: " << B << endl;
+    cout << setw(10) << "" << "angle A: " << A << endl;
+    cout << endl;
+
+    do {
+        cout << setw(10) << "" << "Press 4 to go back to the right Right Triangle an law Menu or 1 to try again: ";
+        cin >> choice;
+
+
+        if (choice == 4) {
+            menuForRightTriangles(choice);
+        }
+        if (choice == 1) {
+            lawOfCosineChart(a, b, c, A, B, C);
+        }
+
+        if (choice != 4) {
+            cout << endl;
+            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
+            cout << endl;
+        }
+    } while (choice != 4);
+
+    system("pause");
+}
+
+double calofAreaofEQ(double A, double a) {
+    return A = (sqrt(3)) / 4 * pow(a, 2);
+}
+
+void areaOfanEqualateral(double A, double a) {
+
+    system("cls");
+    int choice;
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "CALULATING THE AREA OF AN EQUALTERAL" << endl;
+    cout << setw(10) << "" << "-----------------------------------" << endl;
+    cout << endl;
+    cout << setw(10) << "" << "Enter The length of side a: ";
+    cin >> a;
+
+    if (a <= 0) {
+
+        while (a <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> a;
+        }
+
+
+    }
+    A = calofAreaofEQ(A, a);
+
+
+    cout << endl;
+    cout << setw(10) << "" << "The Area of the Equalateral is: " << A << endl;
+    cout << endl << endl;
+
+    do {
+        cout << setw(10) << "" << "Press 4 to go back to the Equalateral Triangle Menu or 1 to try again: ";
+        cin >> choice;
+
+
+        if (choice == 4) {
+            menuforEqualateralTriangle(choice);
+        }
+        if (choice == 1) {
+            areaOfanEqualateral(A, a);
+        }
+
+        if (choice != 4) {
+            cout << endl;
+            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
+            cout << endl;
+        }
+    } while (choice != 4);
+
+    system("pause");
+}
+
+double areaOfIsosceles(double A, double b, double h) {
+    return A = (b * h) / 2;
+}
+
+void calcAreaOfIsosceles(double &b, double &h, double &A) {
+
+    system("cls");
+    int choice;
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "CALULATING THE AREA OF AN ISOSCELES TRIANGLE" << endl;
+    cout << setw(10) << "" << "--------------------------------------------" << endl;
+    cout << setw(15) << "" << "            A \n " << endl;
+    cout << setw(15) << "" << "           / \\" << endl;
+    cout << setw(15) << "" << "          / | \\" << endl;
+    cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
+    cout << setw(15) << "" << "      b /   |   \\ c" << endl;
+    cout << setw(15) << "" << "       /    |    \\" << endl;
+    cout << setw(15) << "" << "      /     |_    \\" << endl;
+    cout << setw(15) << "" << "     /______|_|____\\" << endl;
+    cout << setw(15) << "" << "    C       a       B" << endl;
+
+    cout << endl;
+    cout << setw(10) << "" << "----------------------------------------------" << endl;
+
+    cout << endl;
+    cout << setw(10) << "" << "Enter The length of the base: ";
+    cin >> b;
+
+    if (b <= 0) {
+
+        while (b <= 0) {
+
+            cout << setw(10) << "" << "No Negatives or zeros!!! Please try again: ";
+            cin >> b;
+        }
+
+
+    }
+    cout << endl;
+    cout << setw(10) << "" << "Enter The length of the height: ";
+    cin >> h;
+
+    if (h <= 0) {
+
+        while (h <= 0) {
+
+            cout << setw(10) << "" << "No Negatives or zeros!!! Please try again: ";
+            cin >> h;
+        }
+
+
+    }
+    A = areaOfIsosceles(A, b, h);
+
+    cout << setw(10) << "" << "The Area of the Isosceles triangle is: " << A << endl;
+    cout << endl;
+    cout << endl;
+
+    do {
+        cout << setw(10) << "" << "Press 4 to go back to the Isosceles Triangle Menu or 1 to try again: ";
+        cin >> choice;
+
+
+        if (choice == 4) {
+            menuforIsoscelesTriangle(choice);
+        }
+        if (choice == 1) {
+            calcAreaOfIsosceles(b, h, A);
+        }
+
+        if (choice != 4) {
+            cout << endl;
+            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
+            cout << endl;
+        }
+    } while (choice != 4);
+
+
+
+    system("pause");
+}
+
+double formulaForCosine(double adj, double hyp, double cosine) {
+    return cosine = adj / hyp;
+}
+
+double formulaForSine(double opp, double hyp, double sine) {
+    return sine = opp / hyp;
+}
+
+double triangleCalcDistance(double x1, double y1, double x2, double y2, 
+        double x3, double y3, double side_A, double side_B, double side_C) {
+
+    clearScreen();
+    cout << "\n\n\n";
+    cout << setw(20) << "" << "Calculating Triangle Distance" << endl;
+    cout << setw(10) << "" << "________________________________________________" << endl << endl;
+    cout << setw(10) << "" << "Coordinates for Side a" << endl;
+    cout << setw(10) << "" << "Enter Point 1: ";
+    cin >> x1;
+    cout << setw(10) << "" << "Enter Point 2: ";
+    cin >> y1;
+    cout << "\n" << setw(10) << "" << "Coordinates for Side b" << endl;
+    cout << setw(10) << "" << "Enter Point 1: ";
+    cin >> x2;
+    cout << setw(10) << "" << "Enter Point 2: ";
+    cin >> y2;
+    cout << "\n" << setw(10) << "" << "Coordinates for Side c" << endl;
+    cout << setw(10) << "" << "Enter Point 1: ";
+    cin >> x3;
+    cout << setw(10) << "" << "Enter Point 2: ";
+    cin >> y3;
+    side_A = distanceFormula(x1, x2, y1, y2);
+    side_B = distanceFormula(x2, x3, y2, y3);
+    side_C = distanceFormula(x1, x3, y1, y3);
+    cout << endl;
+    cout << setw(10) << "" << "Applying the Distance Formula..." << endl;
+    cout << setw(10) << "" << "Side A = " << side_A << endl;
+    cout << setw(10) << "" << "Side B = " << side_B << endl;
+    cout << setw(10) << "" << "Side C = " << side_C << endl << endl;
+
+
+    pause();
+
+}
