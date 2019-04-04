@@ -52,6 +52,8 @@ void circleDisplayOutput(int);
 double triangleCalcDistance();
 double angToRad(double);
 double distanceFormula(double, double, double, double);
+void calcDistanceRIGHT();
+double radToDeg(double);
 
 void triangleMenu();
 void menuForRightTriangles();
@@ -64,9 +66,9 @@ double calcofInverseCos(double, double, double, double);
 double CalcToFindAngleA(double, double, double);
 void lawOfCosineChart();
 double calofAreaofEQ(double, double);
-void areaOfanEqualateral(double, double);
+void areaOfanEqualateral();
 double areaOfIsosceles(double, double, double);
-void calcAreaOfIsosceles(double&, double&, double&);
+void calcAreaOfIsosceles();
 double formulaForCosine(double, double, double);
 double formulaForSine(double, double, double);
 double triangleCalcDistance(double, double, double, double,
@@ -88,7 +90,7 @@ void menuForTan();
 
 
 void findingSidesOfIscosceles();
-double calcToFindSideofIsosceles( double p,double b);
+double calcToFindSideofIsosceles(double p, double b);
 
 double calcforHeightofIsosceles(double h, double a, double b);
 void findingtheHeightofanIsosceles();
@@ -104,12 +106,12 @@ const double PI = 3.14159;
 int main() {
 
     int choice,
-        triangleChoice,
-        rightTriangleChoice,
-        isTriChoice,
-        eqTriChoice,
-        trapChoice,
-        circChoice;
+            triangleChoice,
+            rightTriangleChoice,
+            isTriChoice,
+            eqTriChoice,
+            trapChoice,
+            circChoice;
 
     intro();
 
@@ -124,88 +126,84 @@ int main() {
                 //Triangles
             case 1:
                 do {
-                triangleMenu();
+                    triangleMenu();
 
-                triangleChoice = getTriangleChoice();
+                    triangleChoice = getTriangleChoice();
 
-                switch (triangleChoice) {
-                    case 1:
-                        do {
-                        menuForRightTriangles();
+                    switch (triangleChoice) {
+                        case 1: //Right Triangles
+                            do {
+                                menuForRightTriangles();
 
-                        rightTriangleChoice = getRightTriangleChoice();
+                                rightTriangleChoice = getRightTriangleChoice();
 
-                        switch (rightTriangleChoice) {
-                            case 1:
-                                rightTriangleCalulations();
-                                break;
-                            case 2:
-                                lawOfCosineChart();
-                                break;
-                            case 3:
+                                switch (rightTriangleChoice) {
+                                    case 1:
+                                        rightTriangleCalulations();
+                                        break;
+                                    case 2:
+                                        calcDistanceRIGHT();
+                                        break;
+                                    case 3:
+                                        menuForCos();
+                                        break;
+                                    case 4:
+                                        menuForSine();
+                                        break;
+                                    case 5:
+                                        menuForTan();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } while (rightTriangleChoice != 6);
+                            break;
+                        case 2: //Equilateral Triangles
+                            do {
+                                menuforEqualateralTriangle();
 
-                                break;
-                            case 4:
-                                menuForSine();
-                                break;
-                            case 5:
-                                menuForCos();
-                                break;
-                            case 6:
-                                menuForTan();
-                                break;
-                            default:
-                                break;
-                        }
-                        }
-                        while (rightTriangleChoice != 7);
-                        break;
-                    case 2:
-                        do {
-                        menuforEqualateralTriangle();
+                                eqTriChoice = getEqTriangleChoice();
 
-                        eqTriChoice = getEqTriangleChoice();
+                                switch (eqTriChoice) {
+                                    case 1:
+                                        areaOfanEqualateral();
+                                        break;
+                                    case 2:
 
-                        switch (eqTriChoice) {
-                            case 1:
-                                //areaOfanEqualateral();
-                                break;
-                            case 2:
+                                        break;
+                                    case 3:
+                                        break;
+                                    default:
+                                        break;
+                                }
 
-                                break;
-                            case 3:
-                                break;
-                            default:
-                                break;
-                        }
+                            } while (eqTriChoice != 4);
 
-                        } while(eqTriChoice != 4);
+                            break;
+                        case 3: //Isosceles Triangles
+                            do {
+                                menuforIsoscelesTriangle();
 
-                        break;
-                    case 3:
-                        do {
-                            menuforIsoscelesTriangle();
+                                isTriChoice = getIsosTriangleChoice();
 
-                            isTriChoice = getIsosTriangleChoice();
-
-                            switch (isTriChoice) {
-                                case 1:
-
-                                    break;
-                                case 2:
-                                    findingSidesOfIscosceles();
-                                    break;
-                                case 3:
-                                    findingtheHeightofanIsosceles();
-                                    break;
-                                default:
-                                    break;
-                            }
-                        } while (isTriChoice != 4);
-                        break;
-                    default:
-                        break;
-                }
+                                switch (isTriChoice) {
+                                    case 1:
+                                        calcAreaOfIsosceles;
+                                        break;
+                                    case 2:
+                                        findingSidesOfIscosceles();
+                                        break;
+                                    case 3:
+                                        findingtheHeightofanIsosceles();
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } while (isTriChoice != 4);
+                            break;
+                        default:
+                            break;
+                    }
 
                 } while (triangleChoice != 4);
 
@@ -1075,16 +1073,16 @@ double angToRad(double angle) {
 
 
 void triangleMenu() {
-        system("cls");
-        cout << endl << endl << endl;
-        cout << setw(10) << "" << "     TRIANGLE MENU" << endl;
-        cout << setw(10) << "" << "----------------------------" << endl;
-        cout << setw(10) << "" << "1. Right and law of Triangles " << endl;
-        cout << setw(10) << "" << "2. EqualLateral Triangles " << endl;
-        cout << setw(10) << "" << "3. Isosceles Triangles" << endl;
-        cout << setw(10) << "" << "4. Exit back to main menu" << endl;
-        cout << endl;
-        cout << setw(10) << "" << "Enter Your Choice: ";
+    system("cls");
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "     TRIANGLE MENU" << endl;
+    cout << setw(10) << "" << "----------------------------" << endl;
+    cout << setw(10) << "" << "1. Right and law of Triangles " << endl;
+    cout << setw(10) << "" << "2. EqualLateral Triangles " << endl;
+    cout << setw(10) << "" << "3. Isosceles Triangles" << endl;
+    cout << setw(10) << "" << "4. Exit back to main menu" << endl;
+    cout << endl;
+    cout << setw(10) << "" << "Enter Your Choice: ";
 }
 
 void menuForRightTriangles() {
@@ -1092,44 +1090,43 @@ void menuForRightTriangles() {
     double leg1, leg2, hyp;
     double a, b, c, A, B, C, x1, y1, x2, y2, x3, y3, side_A, side_B, side_C;
 
-        system("cls");
-        cout << endl << endl << endl;
-        cout << setw(10) << "" << "RIGHT AND LAWS OF TRIANGLE MENU" << endl;
-        cout << setw(10) << "" << "----------------------------" << endl;
-        cout << setw(10) << "" << "1. Right Triangle(Pythagorean Theorem)" << endl;
-        cout << setw(10) << "" << "2. Law of Cosine Calculation" << endl;
-        cout << setw(10) << "" << "3. Distance Formula for Triangle Calculation" << endl;
-        cout << setw(10) << "" << "4. Calculating Sine" << endl;
-        cout << setw(10) << "" << "5. Calculating cosine" << endl;
-        cout << setw(10) << "" << "6. Calculating Tangent" << endl;
-        cout << setw(10) << "" << "7. Exit Program to main Triangle Menu" << endl;
+    system("cls");
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "RIGHT AND LAWS OF TRIANGLE MENU" << endl;
+    cout << setw(10) << "" << "----------------------------" << endl;
+    cout << setw(10) << "" << "1. Right Triangle(Pythagorean Theorem)" << endl;
+    cout << setw(10) << "" << "2. Distance Formula for Triangle Calculation" << endl;
+    cout << setw(10) << "" << "3. Calculating cosine" << endl;
+    cout << setw(10) << "" << "4. Calculating Sine" << endl;
+    cout << setw(10) << "" << "5. Calculating Tangent" << endl;
+    cout << setw(10) << "" << "6. Exit Program to main Triangle Menu" << endl;
 
 }
 
 void menuforEqualateralTriangle() {
 
-        system("cls");
-        cout << endl << endl << endl;
-        cout << setw(10) << "" << "EQUALATERAL TRIANGLE MENU" << endl;
-        cout << setw(10) << "" << "----------------------------" << endl;
-        cout << setw(10) << "" << "1.Area of EQ Triangle " << endl;
-        cout << setw(10) << "" << "2.Finding the height of an EQ Triangle " << endl;
-        cout << setw(10) << "" << "3.Perimeter " << endl;
-        cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
-        cout << endl;
+    system("cls");
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "EQUALATERAL TRIANGLE MENU" << endl;
+    cout << setw(10) << "" << "----------------------------" << endl;
+    cout << setw(10) << "" << "1.Area of EQ Triangle " << endl;
+    cout << setw(10) << "" << "2.Finding the height of an EQ Triangle " << endl;
+    cout << setw(10) << "" << "3.Perimeter " << endl;
+    cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
+    cout << endl;
 
 }
 
 void menuforIsoscelesTriangle() {
-        system("cls");
-        cout << endl << endl << endl;
-        cout << setw(10) << "" << "ISOSCELES TRIANGLE MENU" << endl;
-        cout << setw(10) << "" << "----------------------------" << endl;
-        cout << setw(10) << "" << "1.Area of an Isosceles Triangle " << endl;
-        cout << setw(10) << "" << "2.Finding Side a1 and a2 of an Isosceles Triangle " << endl;
-        cout << setw(10) << "" << "3.Find The height of the Isosceles Triangle " << endl;
-        cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
-        cout << endl;
+    system("cls");
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "ISOSCELES TRIANGLE MENU" << endl;
+    cout << setw(10) << "" << "----------------------------" << endl;
+    cout << setw(10) << "" << "1.Area of an Isosceles Triangle " << endl;
+    cout << setw(10) << "" << "2.Finding Side a1 and a2 of an Isosceles Triangle " << endl;
+    cout << setw(10) << "" << "3.Find The height of the Isosceles Triangle " << endl;
+    cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
+    cout << endl;
 }
 
 void rightTriangleCalulations() {
@@ -1207,7 +1204,7 @@ double CalcToFindAngleA(double A, double B, double C) {
 
 void lawOfCosineChart() {
 
-    double a, b, c, A, B , C;
+    double a, b, c, A, B, C;
 
     system("cls");
     cout << endl << endl << endl;
@@ -1289,10 +1286,12 @@ double calofAreaofEQ(double A, double a) {
     return A = (sqrt(3)) / 4 * pow(a, 2);
 }
 
-void areaOfanEqualateral(double A, double a) {
+void areaOfanEqualateral() {
 
+    double A, a;
+    
     system("cls");
-    int choice;
+    
     cout << endl << endl << endl;
     cout << setw(10) << "" << "CALULATING THE AREA OF AN EQUALTERAL" << endl;
     cout << setw(10) << "" << "-----------------------------------" << endl;
@@ -1325,8 +1324,10 @@ double areaOfIsosceles(double A, double b, double h) {
     return A = (b * h) / 2;
 }
 
-void calcAreaOfIsosceles(double &b, double &h, double &A) {
+void calcAreaOfIsosceles() {
 
+    double b, h, A;
+    
     system("cls");
     int choice;
     cout << endl << endl << endl;
@@ -1441,15 +1442,12 @@ int triangleChoice() {
 int getRightTriangleChoice() {
     int rightTriangleChoice;
     cin >> rightTriangleChoice;
-    while (rightTriangleChoice < 1 || rightTriangleChoice > 7) {
-        cout << "The only valid Choices are 1-7. Please re-enter: ";
+    while (rightTriangleChoice < 1 || rightTriangleChoice > 6) {
+        cout << "The only valid Choices are 1-6. Please re-enter: ";
         cin >> rightTriangleChoice;
     }
     return rightTriangleChoice;
 }
-
-
-
 
 int getEqTriangleChoice() {
 
@@ -1474,82 +1472,68 @@ int getIsosTriangleChoice() {
 }
 
 /********************************************************************************
-*							degreeofangleUsingArcSin()							*
-*			This function calculates the degree between Given opp and Hypotnuse *
-*			    																*
-*																				*
-*			Precondition: The user inputs 2 values which will be used as		*
-*			arguments.															*
-*																				*
-*			Postcondition: This function returns the menuForSine by using   	*
-*			Sine formula    													*
-*																				*
-********************************************************************************/
-double degreeOfangleUsingArcSin( double opp, double hyp)
-{
-    return asin(opp/hyp);
+ *							degreeofangleUsingArcSin()							*
+ *			This function calculates the degree between Given opp and Hypotnuse *
+ *			    																*
+ *																				*
+ *			Precondition: The user inputs 2 values which will be used as		*
+ *			arguments.															*
+ *																				*
+ *			Postcondition: This function returns the menuForSine by using   	*
+ *			Sine formula    													*
+ *																				*
+ ********************************************************************************/
+double degreeOfangleUsingArcSin(double opp, double hyp) {
+    return radToDeg(asin(opp / hyp));
 }
 
 /********************************************************************************
-*							degreeofangleUsingArcCos()					   	    *
-*			This function calculates the degree between Given opp and Hypotnuse *
-*			    																*
-*																				*
-*			Precondition: The user inputs 2 values which will be used as		*
-*			arguments.															*
-*																				*
-*			Postcondition: This function returns the menuForSine by using   	*
-*			Sine formula    													*
-*																				*
-********************************************************************************/
-double degreeOfangleUsingArcCos( double adj, double hyp)
-{
-    return  acos(adj/hyp);
+ *							degreeofangleUsingArcCos()					   	    *
+ *			This function calculates the degree between Given opp and Hypotnuse *
+ *			    																*
+ *																				*
+ *			Precondition: The user inputs 2 values which will be used as		*
+ *			arguments.															*
+ *																				*
+ *			Postcondition: This function returns the menuForSine by using   	*
+ *			Sine formula    													*
+ *																				*
+ ********************************************************************************/
+double degreeOfangleUsingArcCos(double adj, double hyp) {
+    return radToDeg(acos(adj / hyp));
 }
 
 /********************************************************************************
-*							degreeofangleUsingArcTan()					    	*
-*			This function calculates the degree between Given opp and Hypotnuse *
-*			    																*
-*																				*
-*			Precondition: The user inputs 2 values which will be used as		*
-*			arguments.															*
-*																				*
-*			Postcondition: This function returns the menuForSine by using   	*
-*			Sine formula    													*
-*																				*
-********************************************************************************/
-double degreeOfangleUsingArcTan( double opp, double adj)
-{
-    return  atan(adj/opp);
+ *							degreeofangleUsingArcTan()					    	*
+ *			This function calculates the degree between Given opp and Hypotnuse *
+ *			    																*
+ *																				*
+ *			Precondition: The user inputs 2 values which will be used as		*
+ *			arguments.															*
+ *																				*
+ *			Postcondition: This function returns the menuForSine by using   	*
+ *			Sine formula    													*
+ *																				*
+ ********************************************************************************/
+double degreeOfangleUsingArcTan(double opp, double adj) {
+    return radToDeg(atan(adj / opp));
 }
 
-
-
-
-
-
-
-
-
-
-
 /********************************************************************************
-*							menuForSine()		        						*
-*				This function collects 2 user inputs and uses 3 of them			*
-*				as arguments in the function for solving the Degree for Sine    *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				menuForSin()											   	    *
-*																				*
-********************************************************************************/
-void menuForSine()
-{
+ *							menuForSine()		        						*
+ *				This function collects 2 user inputs and uses 3 of them			*
+ *				as arguments in the function for solving the Degree for Sine    *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				menuForSin()											   	    *
+ *																				*
+ ********************************************************************************/
+void menuForSine() {
     double opp, hyp, x;
     system("cls");
-        cout << endl << endl << endl;
+    cout << endl << endl << endl;
     cout << setw(10) << "" << "finding the degree of x using sin" << endl;
     cout << setw(10) << "" << "-----------------------------------" << endl;
     cout << setw(10) << "" << "          |\\     " << endl;
@@ -1571,14 +1555,12 @@ void menuForSine()
     cout << endl;
     cout << setw(10) << "" << "Enter the length of the Opposite: ";
     cin >> opp;
-    if(opp <= 0)
-    {
+    if (opp <= 0) {
 
-        while(opp <= 0)
-        {
+        while (opp <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> opp;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> opp;
         }
 
 
@@ -1586,25 +1568,23 @@ void menuForSine()
 
     cout << setw(10) << "" << "Enter the length of the Hypotnuse: ";
     cin >> hyp;
-    if(hyp <= 0)
-    {
+    if (hyp <= 0) {
 
-        while(hyp <= 0)
-        {
+        while (hyp <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> hyp;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> hyp;
         }
 
 
     }
     cout << endl;
 
-    x = degreeOfangleUsingArcSin(opp,hyp);
+    x = degreeOfangleUsingArcSin(opp, hyp);
 
     cout << setw(10) << "" << "sin(x)= " << opp << "/" << hyp << endl;
     cout << setw(10) << "" << "To have the degree the function has to be x = arcsine(opp/hyp)" << endl;
-    cout << setw(10) << "" << "So x = " << x << static_cast<char>(248) << endl;
+    cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
 
 
 
@@ -1624,21 +1604,20 @@ void menuForSine()
 }
 
 /********************************************************************************
-*							menuForCos()		        						*
-*				This function collects 2 user inputs and uses 3 of them			*
-*				as arguments in the function for solving the Degree for Cosine  *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				menuForCos().											   	    *
-*																				*
-********************************************************************************/
-void menuForCos()
-{
+ *							menuForCos()		        						*
+ *				This function collects 2 user inputs and uses 3 of them			*
+ *				as arguments in the function for solving the Degree for Cosine  *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				menuForCos().											   	    *
+ *																				*
+ ********************************************************************************/
+void menuForCos() {
     double adj, hyp, x;
     system("cls");
-        cout << endl << endl << endl;
+    cout << endl << endl << endl;
     cout << setw(10) << "" << "finding the degree of x using Cosine" << endl;
     cout << setw(10) << "" << "-----------------------------------" << endl;
     cout << setw(10) << "" << "          |\\     " << endl;
@@ -1660,14 +1639,12 @@ void menuForCos()
     cout << endl;
     cout << setw(10) << "" << "Enter the length of the Adjacent: ";
     cin >> adj;
-    if(adj <= 0)
-    {
+    if (adj <= 0) {
 
-        while(adj <= 0)
-        {
+        while (adj <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> adj;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> adj;
         }
 
 
@@ -1675,25 +1652,23 @@ void menuForCos()
 
     cout << setw(10) << "" << "Enter the length of the Hypotnuse: ";
     cin >> hyp;
-    if(hyp <= 0)
-    {
+    if (hyp <= 0) {
 
-        while(hyp <= 0)
-        {
+        while (hyp <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> hyp;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> hyp;
         }
 
 
     }
     cout << endl;
 
-    x = degreeOfangleUsingArcCos(adj,hyp);
+    x = degreeOfangleUsingArcCos(adj, hyp);
 
     cout << setw(10) << "" << "cos(x)= " << adj << "/" << hyp << endl;
     cout << setw(10) << "" << "To have the degree the function has to be x = arcCos(opp/hyp)" << endl;
-    cout << setw(10) << "" << "So x = " << x << static_cast<char>(248) << endl;
+    cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
 
 
 
@@ -1713,23 +1688,22 @@ void menuForCos()
 }
 
 /********************************************************************************
-*							menuForTan()		        						*
-*				This function collects 2 user inputs and uses 3 of them			*
-*				as arguments in the function for solving the Degree for Tan     *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				menuForTan()											   	    *
-*																				*
-********************************************************************************/
+ *							menuForTan()		        						*
+ *				This function collects 2 user inputs and uses 3 of them			*
+ *				as arguments in the function for solving the Degree for Tan     *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				menuForTan()											   	    *
+ *																				*
+ ********************************************************************************/
 
-void menuForTan()
-{
+void menuForTan() {
     double x, opp, adj;
     system("cls");
-        cout << endl << endl << endl;
-    cout << setw(10) << "" << "finding the degree of x using Cosine" << endl;
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "finding the degree of x using Tangent" << endl;
     cout << setw(10) << "" << "-----------------------------------" << endl;
     cout << setw(10) << "" << "          |\\     " << endl;
     cout << setw(10) << "" << "          | \\   " << endl;
@@ -1748,42 +1722,256 @@ void menuForTan()
     cout << setw(10) << "" << "in order to find the name degree of x we need to" << endl;
     cout << setw(10) << "" << "know what tan(x) is. and we know that tan(x)= opp/adj.  " << endl;
     cout << endl;
-    cout << setw(10) << "" << "Enter the length of the Adjacent: ";
+    cout << setw(10) << "" << "Enter the length of the Opposite: ";
     cin >> opp;
-    if(opp <= 0)
-    {
+    if (opp <= 0) {
 
-        while(opp <= 0)
-        {
+        while (opp <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> opp;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> opp;
         }
 
 
     }
 
-    cout << setw(10) << "" << "Enter the length of the Hypotnuse: ";
+    cout << setw(10) << "" << "Enter the length of the Adjacent: ";
     cin >> adj;
-    if(adj <= 0)
-    {
+    if (adj <= 0) {
 
-        while(adj <= 0)
-        {
+        while (adj <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> adj;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> adj;
         }
 
 
     }
     cout << endl;
 
-    x = degreeOfangleUsingArcTan(opp,adj);
+    x = degreeOfangleUsingArcTan(opp, adj);
 
     cout << setw(10) << "" << "cos(x)= " << opp << "/" << adj << endl;
     cout << setw(10) << "" << "To have the degree the function has to be x = arcTan(opp/hyp)" << endl;
-    cout << setw(10) << "" << "So x = " << x << static_cast<char>(248) << endl;
+    cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
+
+    system("pause");
+
+}
+
+double calcToFindSideofIsosceles(double p, double b) {
+    return (p / 2) * (b / 2);
+}
+
+/********************************************************************************
+ *								findingSidesOfIscosceles()	        			*
+ *				This function collects 2 user inputs and uses 1 of them			*
+ *				as arguments in the function for solving the sided of an Is tri *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				findingSidesOfIscosceles().									    *
+ *																				*
+ ********************************************************************************/
+void findingSidesOfIscosceles() {
+    system("cls");
+    double a, p, b;
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "FINDING SIDE a OF AN ISOSELES" << endl;
+    cout << setw(10) << "" << "--------------------------------------------" << endl;
+    cout << setw(15) << "" << "             \n " << endl;
+    cout << setw(15) << "" << "           / \\" << endl;
+    cout << setw(15) << "" << "          / | \\" << endl;
+    cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
+    cout << setw(15) << "" << "        /   |   \\ " << endl;
+    cout << setw(15) << "" << "       /    |    \\" << endl;
+    cout << setw(15) << "" << "      /     |_    \\" << endl;
+    cout << setw(15) << "" << "     /______|_|____\\" << endl;
+    cout << setw(15) << "" << "           base        " << endl;
+
+    cout << endl;
+    cout << setw(10) << "" << "----------------------------------------------" << endl;
+    cout << setw(10) << "" << "Enter the Perimeter of the Triangle: ";
+    cin >> p;
+    if (p <= 0) {
+
+        while (p <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> p;
+        }
+
+
+    }
+
+    cout << setw(10) << "" << "Enter the Base of the Triangle: ";
+    cin >> b;
+    if (b <= 0) {
+
+        while (b <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> b;
+        }
+
+
+    }
+
+
+    a = calcToFindSideofIsosceles(p, b);
+
+
+    cout << endl;
+    cout << setw(10) << "" << "The calculations of side a1 and a2 are: " << a << endl;
+
+    system("pause");
+
+}
+
+double calcforHeightofIsosceles(double a, double b) {
+    return sqrt(pow(a, 2) * pow(b, 2) / 4);
+}
+
+/********************************************************************************
+ *								findingHeightOfIscosceles()	        			*
+ *			This function collects 2 user inputs and uses 1 of them		    	*
+ *			as arguments in the function for solving the height of an Is tri    *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				findingHeightOfIscosceles().								    *
+ *																				*
+ ********************************************************************************/
+void findingtheHeightofanIsosceles() {
+    system("cls");
+    double h, a, b;
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "FINDING THE HEIGHT OF SIDES a OF AN ISOSELES" << endl;
+    cout << setw(10) << "" << "--------------------------------------------" << endl;
+    cout << setw(15) << "" << "             \n " << endl;
+    cout << setw(15) << "" << "           / \\" << endl;
+    cout << setw(15) << "" << "          / | \\" << endl;
+    cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
+    cout << setw(15) << "" << "       a/   |   \\ a " << endl;
+    cout << setw(15) << "" << "       /    | h  \\" << endl;
+    cout << setw(15) << "" << "      /     |_    \\" << endl;
+    cout << setw(15) << "" << "     /______|_|____\\" << endl;
+    cout << setw(15) << "" << "             b      " << endl;
+    cout << endl;
+    cout << setw(10) << "" << "----------------------------------------------" << endl;
+    cout << setw(10) << "" << "Enter side a of the of the Isosceles triangle";
+    cin >> a;
+    if (a <= 0) {
+
+        while (a <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> a;
+        }
+
+
+    }
+
+    cout << setw(10) << "" << "Enter the base the of the Isosceles triangle";
+    cin >> b;
+    if (b <= 0) {
+
+        while (b <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> b;
+        }
+
+
+    }
+
+
+    cout << endl;
+
+    h = calcforHeightofIsosceles(a, b);
+
+    cout << setw(10) << "" << "The height for the Isosceles triangle is: " << h << endl;
+
+    system("pause");
+
+}
+
+
+
+/// This is a little extra if you want to add on the Isosceles Menu.
+
+/********************************************************************************
+ *						FindingDegreesUsingSineIsosceles()	                    *
+ *				This function collects 2 user inputs and uses 1 of them			*
+ *				as arguments in the function Finding the degree using sine      *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				FindingDegreesUsingSineIsosceles().					            *
+ *																				*
+ ********************************************************************************/
+
+void FindingDegreesUsingSineIsosceles() {
+    system("cls");
+    double x, opp, hyp;
+    cout << endl << endl << endl;
+    cout << setw(10) << "" << "FINDING ANGLE B  USING SINE" << endl;
+    cout << setw(10) << "" << "--------------------------------------------" << endl;
+    cout << setw(15) << "" << "             \n " << endl;
+    cout << setw(15) << "" << "           / \\" << endl;
+    cout << setw(15) << "" << "          / | \\" << endl;
+    cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
+    cout << setw(15) << "" << "       a/   |   \\ hyp " << endl;
+    cout << setw(15) << "" << "       /    | opp\\" << endl;
+    cout << setw(15) << "" << "      /     |_    \\" << endl;
+    cout << setw(15) << "" << "     /_b____|_|__x_\\" << endl;
+    cout << setw(15) << "" << "                   " << endl;
+    cout << endl;
+    cout << setw(10) << "" << "----------------------------------------------" << endl;
+    cout << setw(10) << "" << "To find all the degrees of the triangle we need" << endl;
+    cout << setw(10) << "" << "To first find x and to do that we will use sin(x)" << endl;
+    cout << setw(10) << "" << "and x = arcSine(opp/hyp) to find the degrees" << endl;
+    cout << endl;
+
+    cout << setw(10) << "" << "Enter the length of the opposite: ";
+    cin >> opp;
+    if (opp <= 0) {
+
+        while (opp <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> opp;
+        }
+
+
+    }
+
+    cout << setw(10) << "" << "Enter the Length of the hypotnuse: ";
+    cin >> hyp;
+    if (hyp <= 0) {
+
+        while (hyp <= 0) {
+
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> hyp;
+        }
+
+
+    }
+
+    x = degreeOfangleUsingArcSin(opp, hyp);
+
+    cout << endl;
+    cout << setw(10) << "" << "sin(x)= " << opp << "/" << hyp << endl;
+    cout << setw(10) << "" << "To have the degree the function has to be x = arcsine(opp/hyp)" << endl;
+    cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
+    cout << setw(10) << "" << "So angle will also be b = " << x << static_cast<char> (248) << endl;
+    cout << setw(10) << "" << " x is congruent to b because" << endl;
+    cout << setw(10) << "" << "by cutting the isosceles triangle in half you'll get a right triangle " << endl;
+
 
 
 
@@ -1795,368 +1983,81 @@ void menuForTan()
 
 
 
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-double calcToFindSideofIsosceles( double p, double b )
-{
-   return   (p/2) * (b/2);
 }
 
 /********************************************************************************
-*								findingSidesOfIscosceles()	        			*
-*				This function collects 2 user inputs and uses 1 of them			*
-*				as arguments in the function for solving the sided of an Is tri *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				findingSidesOfIscosceles().									    *
-*																				*
-********************************************************************************/
-void findingSidesOfIscosceles()
-{
-   system("cls");
-    double a,p,b;
-    cout << endl << endl << endl;
-    cout << setw(10) << "" << "FINDING SIDE a OF AN ISOSELES" << endl;
-    cout << setw(10) << "" << "--------------------------------------------" << endl;
-    cout << setw(15) << "" << "             \n " << endl;
-  cout << setw(15) << "" << "           / \\" << endl;
-  cout << setw(15) << "" << "          / | \\" << endl;
-  cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
-  cout << setw(15) << "" << "        /   |   \\ " << endl;
-  cout << setw(15) << "" << "       /    |    \\" << endl;
-  cout << setw(15) << "" << "      /     |_    \\" << endl;
-  cout << setw(15) << "" << "     /______|_|____\\" << endl;
-  cout << setw(15) << "" << "           base        " << endl;
-
-  cout << endl;
-  cout << setw(10) << "" << "----------------------------------------------" << endl;
-  cout << setw(10) << "" << "Enter the Perimeter of the Triangle: ";
-  cin >> p;
-  if(p <= 0)
-    {
-
-        while(p <= 0)
-        {
-
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> p;
-        }
-
-
-    }
-
-  cout << setw(10) << "" << "Enter the Base of the Triangle: ";
-  cin >> b;
-  if(b <= 0)
-    {
-
-        while(b <= 0)
-        {
-
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> b;
-        }
-
-
-    }
-
-
-  a = calcToFindSideofIsosceles( p, b );
-
-
-  cout << endl;
-  cout << setw(10) << "" << "The calculations of side a1 and a2 are: " << a << endl;
-
-
-
-
- system("pause");
-
-
-}
-
-double calcforHeightofIsosceles( double a, double b)
-{
-    return sqrt(pow(a,2)* pow(b,2)/4 );
-}
-
-/********************************************************************************
-*								findingHeightOfIscosceles()	        			*
-*			This function collects 2 user inputs and uses 1 of them		    	*
-*			as arguments in the function for solving the height of an Is tri    *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				findingHeightOfIscosceles().								    *
-*																				*
-********************************************************************************/
-void findingtheHeightofanIsosceles()
-{
-    system("cls");
-    double h, a, b;
-    cout << endl << endl << endl;
-    cout << setw(10) << "" << "FINDING THE HEIGHT OF SIDES a OF AN ISOSELES" << endl;
-    cout << setw(10) << "" << "--------------------------------------------" << endl;
-    cout << setw(15) << "" << "             \n " << endl;
-  cout << setw(15) << "" << "           / \\" << endl;
-  cout << setw(15) << "" << "          / | \\" << endl;
-  cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
-  cout << setw(15) << "" << "       a/   |   \\ a " << endl;
-  cout << setw(15) << "" << "       /    | h  \\" << endl;
-  cout << setw(15) << "" << "      /     |_    \\" << endl;
-  cout << setw(15) << "" << "     /______|_|____\\" << endl;
-  cout << setw(15) << "" << "             b      " << endl;
-  cout << endl;
-  cout << setw(10) << "" << "----------------------------------------------" << endl;
-  cout << setw(10) << "" << "Enter side a of the of the Isosceles triangle";
-  cin >> a;
-  if(a <= 0)
-    {
-
-        while(a <= 0)
-        {
-
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> a;
-        }
-
-
-    }
-
-  cout << setw(10) << "" << "Enter the base the of the Isosceles triangle";
-  cin >> b;
-  if(b <= 0)
-    {
-
-        while(b <= 0)
-        {
-
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> b;
-        }
-
-
-    }
-
-
-  cout << endl;
-
-  h = calcforHeightofIsosceles( a, b);
-
-  cout << setw(10) << "" << "The height for the Isosceles triangle is: " << h << endl;
-
-
-
-
- system("pause");
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-/// This is a little extra if you want to add on the Isosceles Menu.
-
-/********************************************************************************
-*						FindingDegreesUsingSineIsosceles()	                    *
-*				This function collects 2 user inputs and uses 1 of them			*
-*				as arguments in the function Finding the degree using sine      *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				FindingDegreesUsingSineIsosceles().					            *
-*																				*
-********************************************************************************/
-
-
-
-
-
-
-
-void FindingDegreesUsingSineIsosceles()
-{
-    system("cls");
-    double x,opp,hyp;
-    cout << endl << endl << endl;
-    cout << setw(10) << "" << "FINDING ANGLE B  USING SINE" << endl;
-    cout << setw(10) << "" << "--------------------------------------------" << endl;
-    cout << setw(15) << "" << "             \n " << endl;
-  cout << setw(15) << "" << "           / \\" << endl;
-  cout << setw(15) << "" << "          / | \\" << endl;
-  cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
-  cout << setw(15) << "" << "       a/   |   \\ hyp " << endl;
-  cout << setw(15) << "" << "       /    | opp\\" << endl;
-  cout << setw(15) << "" << "      /     |_    \\" << endl;
-  cout << setw(15) << "" << "     /_b____|_|__x_\\" << endl;
-  cout << setw(15) << "" << "                   " << endl;
-  cout << endl;
-  cout << setw(10) << "" << "----------------------------------------------" << endl;
-  cout << setw(10) << "" << "To find all the degrees of the triangle we need" << endl;
-  cout << setw(10) << "" << "To first find x and to do that we will use sin(x)" << endl;
-  cout << setw(10) << "" << "and x = arcSine(opp/hyp) to find the degrees" << endl;
-  cout << endl;
-
-  cout << setw(10) << "" << "Enter the length of the opposite: ";
-  cin >> opp;
-  if(opp <= 0)
-    {
-
-        while(opp <= 0)
-        {
-
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> opp;
-        }
-
-
-    }
-
-  cout << setw(10) << "" << "Enter the Length of the hypotnuse: ";
-  cin >> hyp;
-  if(hyp <= 0)
-    {
-
-        while(hyp <= 0)
-        {
-
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> hyp;
-        }
-
-
-    }
-
-  x = degreeOfangleUsingArcSin(opp,hyp);
-
-    cout << endl;
-    cout << setw(10) << "" << "sin(x)= " << opp << "/" << hyp << endl;
-    cout << setw(10) << "" << "To have the degree the function has to be x = arcsine(opp/hyp)" << endl;
-    cout << setw(10) << "" << "So x = " << x << static_cast<char>(248) << endl;
-    cout << setw(10) << "" << "So angle will also be b = " << x << static_cast<char>(248) << endl;
-    cout << setw(10) << "" << " x is congruent to b because" << endl;
-    cout << setw(10) << "" << "by cutting the isosceles triangle in half you'll get a right triangle " << endl;
-
-
-
-
- system("pause");
-
-
-
-
-
-
-
-}
-
-/********************************************************************************
-*						FindingDegreesUsingCosineIsosceles()	                *
-*				This function collects 2 user inputs and uses 1 of them			*
-*				as arguments in the function Finding the degree using sine      *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				FindingDegreesUsingCosineIsosceles().					        *
-*																				*
-********************************************************************************/
-void FindingDegreesUsingCosineIsosceles()
-{
+ *						FindingDegreesUsingCosineIsosceles()	                *
+ *				This function collects 2 user inputs and uses 1 of them			*
+ *				as arguments in the function Finding the degree using sine      *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				FindingDegreesUsingCosineIsosceles().					        *
+ *																				*
+ ********************************************************************************/
+void FindingDegreesUsingCosineIsosceles() {
     system("cls");
     double x, adj, hyp;
     cout << endl << endl << endl;
     cout << setw(10) << "" << "FINDING ANGLE B  USING COSINE" << endl;
     cout << setw(10) << "" << "--------------------------------------------" << endl;
     cout << setw(15) << "" << "             \n " << endl;
-  cout << setw(15) << "" << "           / \\" << endl;
-  cout << setw(15) << "" << "          / | \\" << endl;
-  cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
-  cout << setw(15) << "" << "       a/   |   \\ hyp " << endl;
-  cout << setw(15) << "" << "       /    |    \\" << endl;
-  cout << setw(15) << "" << "      /     |_    \\" << endl;
-  cout << setw(15) << "" << "     /_b____|_|__x_\\" << endl;
-  cout << setw(15) << "" << "               adj    " << endl;
-  cout << endl;
-  cout << setw(10) << "" << "----------------------------------------------" << endl;
-  cout << setw(10) << "" << "To find all the degrees of the triangle we need" << endl;
-  cout << setw(10) << "" << "To first find x and to do that we will use cos(x)" << endl;
-  cout << setw(10) << "" << "and x = arcSine(opp/hyp) to find the degrees" << endl;
-  cout << endl;
+    cout << setw(15) << "" << "           / \\" << endl;
+    cout << setw(15) << "" << "          / | \\" << endl;
+    cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
+    cout << setw(15) << "" << "       a/   |   \\ hyp " << endl;
+    cout << setw(15) << "" << "       /    |    \\" << endl;
+    cout << setw(15) << "" << "      /     |_    \\" << endl;
+    cout << setw(15) << "" << "     /_b____|_|__x_\\" << endl;
+    cout << setw(15) << "" << "               adj    " << endl;
+    cout << endl;
+    cout << setw(10) << "" << "----------------------------------------------" << endl;
+    cout << setw(10) << "" << "To find all the degrees of the triangle we need" << endl;
+    cout << setw(10) << "" << "To first find x and to do that we will use cos(x)" << endl;
+    cout << setw(10) << "" << "and x = arcSine(opp/hyp) to find the degrees" << endl;
+    cout << endl;
 
-  cout << setw(10) << "" << "Enter the length of the Adjacent: ";
-  cin >> adj;
-  if(adj <= 0)
-    {
+    cout << setw(10) << "" << "Enter the length of the Adjacent: ";
+    cin >> adj;
+    if (adj <= 0) {
 
-        while(adj <= 0)
-        {
+        while (adj <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> adj;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> adj;
         }
 
 
     }
 
-  cout << setw(10) << "" << "Enter the Length of the hypotnuse: ";
-  cin >> hyp;
-  if(hyp <= 0)
-    {
+    cout << setw(10) << "" << "Enter the Length of the hypotnuse: ";
+    cin >> hyp;
+    if (hyp <= 0) {
 
-        while(hyp <= 0)
-        {
+        while (hyp <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> hyp;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> hyp;
         }
 
 
     }
 
-  x = degreeOfangleUsingArcCos(adj,hyp);
+    x = degreeOfangleUsingArcCos(adj, hyp);
 
     cout << endl;
     cout << setw(10) << "" << "sin(x)= " << adj << "/" << hyp << endl;
     cout << setw(10) << "" << "To have the degree the function has to be x = arcCos(opp/hyp)" << endl;
-    cout << setw(10) << "" << "So x = " << x << static_cast<char>(248) << endl;
-    cout << setw(10) << "" << "So angle will also be b = " << x << static_cast<char>(248) << endl;
+    cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
+    cout << setw(10) << "" << "So angle will also be b = " << x << static_cast<char> (248) << endl;
     cout << setw(10) << "" << " x is congruent to b because" << endl;
     cout << setw(10) << "" << "by cutting the isosceles triangle in half you'll get a right triangle " << endl;
 
 
 
 
- system("pause");
+    system("pause");
 
 
 
@@ -2167,83 +2068,78 @@ void FindingDegreesUsingCosineIsosceles()
 }
 
 /********************************************************************************
-*						FindingDegreesUsingTanIsosceles()	                    *
-*				This function collects 2 user inputs and uses 1 of them			*
-*				as arguments in the function Finding the degree using sine      *
-*																				*
-*				Precondition: Collects user input for arguments					*
-*																				*
-*				Postcondition: Returns value for sides with helper function		*
-*				FindingDegreesUsingTanIsosceles().					            *
-*																				*
-********************************************************************************/
-void FindingDegreesUsingTanIsosceles()
-{
+ *						FindingDegreesUsingTanIsosceles()	                    *
+ *				This function collects 2 user inputs and uses 1 of them			*
+ *				as arguments in the function Finding the degree using sine      *
+ *																				*
+ *				Precondition: Collects user input for arguments					*
+ *																				*
+ *				Postcondition: Returns value for sides with helper function		*
+ *				FindingDegreesUsingTanIsosceles().					            *
+ *																				*
+ ********************************************************************************/
+void FindingDegreesUsingTanIsosceles() {
     system("cls");
     double x, opp, adj;
     cout << endl << endl << endl;
     cout << setw(10) << "" << "FINDING ANGLE B  USING COSINE" << endl;
     cout << setw(10) << "" << "--------------------------------------------" << endl;
     cout << setw(15) << "" << "             \n " << endl;
-  cout << setw(15) << "" << "           / \\" << endl;
-  cout << setw(15) << "" << "          / | \\" << endl;
-  cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
-  cout << setw(15) << "" << "       a/   |   \\     " << endl;
-  cout << setw(15) << "" << "       / opp|    \\" << endl;
-  cout << setw(15) << "" << "      /     |_    \\" << endl;
-  cout << setw(15) << "" << "     /_b____|_|__x_\\" << endl;
-  cout << setw(15) << "" << "               adj    " << endl;
-  cout << endl;
-  cout << setw(10) << "" << "----------------------------------------------" << endl;
-  cout << setw(10) << "" << "To find all the degrees of the triangle we need" << endl;
-  cout << setw(10) << "" << "To first find x and to do that we will use Tan(x)" << endl;
-  cout << setw(10) << "" << "and x = arcTan(opp/adj) to find the degrees" << endl;
-  cout << endl;
+    cout << setw(15) << "" << "           / \\" << endl;
+    cout << setw(15) << "" << "          / | \\" << endl;
+    cout << setw(15) << "" << "      \\  /  |  \\ / " << endl;
+    cout << setw(15) << "" << "       a/   |   \\     " << endl;
+    cout << setw(15) << "" << "       / opp|    \\" << endl;
+    cout << setw(15) << "" << "      /     |_    \\" << endl;
+    cout << setw(15) << "" << "     /_b____|_|__x_\\" << endl;
+    cout << setw(15) << "" << "               adj    " << endl;
+    cout << endl;
+    cout << setw(10) << "" << "----------------------------------------------" << endl;
+    cout << setw(10) << "" << "To find all the degrees of the triangle we need" << endl;
+    cout << setw(10) << "" << "To first find x and to do that we will use Tan(x)" << endl;
+    cout << setw(10) << "" << "and x = arcTan(opp/adj) to find the degrees" << endl;
+    cout << endl;
 
-  cout << setw(10) << "" << "Enter the length of the Adjacent: ";
-  cin >> opp;
-  if(opp <= 0)
-    {
+    cout << setw(10) << "" << "Enter the length of the Adjacent: ";
+    cin >> opp;
+    if (opp <= 0) {
 
-        while(opp <= 0)
-        {
+        while (opp <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> opp;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> opp;
         }
 
 
     }
 
-  cout << setw(10) << "" << "Enter the Length of the hypotnuse: ";
-  cin >> adj;
-  if(adj <= 0)
-    {
+    cout << setw(10) << "" << "Enter the Length of the hypotnuse: ";
+    cin >> adj;
+    if (adj <= 0) {
 
-        while(adj <= 0)
-        {
+        while (adj <= 0) {
 
-          cout << setw(10) << "" << "No Negatives!!! Please try again: ";
-          cin >> adj;
+            cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+            cin >> adj;
         }
 
 
     }
 
-  x = degreeOfangleUsingArcTan(opp,adj);
+    x = degreeOfangleUsingArcTan(opp, adj);
 
     cout << endl;
     cout << setw(10) << "" << "sin(x)= " << opp << "/" << adj << endl;
     cout << setw(10) << "" << "To have the degree the function has to be x = arcTan(opp/adj)" << endl;
-    cout << setw(10) << "" << "So x = " << x << static_cast<char>(248) << endl;
-    cout << setw(10) << "" << "So angle will also be b = " << x << static_cast<char>(248) << endl;
+    cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
+    cout << setw(10) << "" << "So angle will also be b = " << x << static_cast<char> (248) << endl;
     cout << setw(10) << "" << " x is congruent to b because" << endl;
     cout << setw(10) << "" << "by cutting the isosceles triangle in half you'll get a right triangle " << endl;
 
 
 
 
- system("pause");
+    system("pause");
 
 
 
@@ -2251,4 +2147,96 @@ void FindingDegreesUsingTanIsosceles()
 
 
 
+}
+
+void calcDistanceRIGHT() {
+
+    double x1, y1,
+            x2, y2, 
+            x3, y3,
+            side_A,
+            side_B,
+            side_C;
+    
+    clearScreen();
+
+    cout << "\n\n\n";
+
+    cout << setw(25) << "" << " CALCULATING DISTANCE" << endl;
+    cout << setw(10) << "" << "----------------------------------------" << endl << endl;
+    cout << setw(10) << "" << "To find the distance between two " << endl;
+    cout << setw(10) << "" << "points we need 4 coordinates" << endl;
+    cout << setw(10) << "" << "       (X1, Y1)    " << endl;
+    cout << setw(10) << "" << "          |\\     " << endl;
+    cout << setw(10) << "" << "          | \\   " << endl;
+    cout << setw(10) << "" << "          |  \\   " << endl;
+    cout << setw(10) << "" << "          |   \\  " << endl;
+    cout << setw(10) << "" << "          |    \\      " << endl;
+    cout << setw(10) << "" << "          |     \\      " << endl;
+    cout << setw(10) << "" << "          |      \\        " << endl;
+    cout << setw(10) << "" << "          |       \\       " << endl;
+    cout << setw(10) << "" << "          |        \\      " << endl;
+    cout << setw(10) << "" << "          |_        \\     " << endl;
+    cout << setw(10) << "" << " (X3, Y3) |_|________\\  (X2, Y2)" << endl << endl;
+    cout << setw(10) << "" << "----------------------------------" << endl << endl;
+    cout << setw(10) << "" << "Side A" << endl;
+
+    cout << setw(10) << "" << "Enter X: ";
+
+    cin >> x1;
+
+    cout << setw(10) << "" << "Enter Y: ";
+
+    cin >> y1;
+
+    cout << "\n" << setw(10) << "" << "Side B" << endl;
+
+    cout << setw(10) << "" << "Enter Point 1: ";
+
+    cin >> x2;
+
+    cout << setw(10) << "" << "Enter Point 2: ";
+
+    cin >> y2;
+
+    cout << "\n" << setw(10) << "" << "Side C" << endl;
+
+    cout << setw(10) << "" << "Enter Point 1: ";
+
+    cin >> x3;
+
+    cout << setw(10) << "" << "Enter Point 2: ";
+
+    cin >> y3;
+
+    side_A = distanceFormula(x1, x2, y1, y2);
+
+    side_B = distanceFormula(x2, x3, y2, y3);
+
+    side_C = distanceFormula(x1, x3, y1, y3);
+
+    cout << endl;
+
+    cout << setw(10) << "" << "Applying the Distance Formula..." << endl;
+
+    cout << setw(10) << "" << "Side A = " << side_A << endl;
+
+    cout << setw(10) << "" << "Side B = " << side_B << endl;
+
+    cout << setw(10) << "" << "Side C = " << side_C << endl << endl;
+}
+
+/********************************************************************************
+ *								  radToDeg()									*
+ *				This function converts radians to degrees by multiplying by 180 *
+ *				then dividing by PI												*
+ *																				*
+ *				Precondition: This function uses a double as its argument.		*
+ *																				*
+ *				Postcondition: This function returns the conversion of angle	*
+ *				to radians.														*
+ *																				*
+ ********************************************************************************/
+double radToDeg(double rad) {
+    return (rad * 180) / PI;
 }
