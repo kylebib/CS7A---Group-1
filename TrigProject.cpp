@@ -53,16 +53,16 @@ double triangleCalcDistance();
 double angToRad(double);
 double distanceFormula(double, double, double, double);
 
-void triangleMenu(int);
-void menuForRightTriangles(int);
+void triangleMenu();
+void menuForRightTriangles();
 void menuforEqualateralTriangle(int);
 void menuforIsoscelesTriangle(int);
-void rightTriangleCalulations(double&, double&, double&);
-double calOfPythTheorem(double, double, double);
+void rightTriangleCalulations();
+double calOfPythTheorem(double, double);
 double calcofLawofcosine(double, double, double, double);
 double calcofInverseCos(double, double, double, double);
 double CalcToFindAngleA(double, double, double);
-void lawOfCosineChart(double, double, double, double, double, double);
+void lawOfCosineChart();
 double calofAreaofEQ(double, double);
 void areaOfanEqualateral(double, double);
 double areaOfIsosceles(double, double, double);
@@ -72,12 +72,16 @@ double formulaForSine(double, double, double);
 double triangleCalcDistance(double, double, double, double, 
         double, double, double, double, double);
 
+int triangleChoice();
+int getRightTriangleChoice();
+
 const double PI = 3.14159;
 
 int main() {
 
     int choice,
             triangleChoice,
+            rightTriangleChoice,
             trapChoice,
             circChoice;
 
@@ -93,9 +97,51 @@ int main() {
 
                 //Triangles
             case 1:
-                triangleMenu(choice);
+                do {
+                triangleMenu();
+                
+                triangleChoice = getTriangleChoice();
+                
+                switch (triangleChoice) {
+                    case 1:
+                        do {
+                        menuForRightTriangles();
+                        
+                        rightTriangleChoice = getRightTriangleChoice();
+                        
+                        switch (rightTriangleChoice) {
+                            case 1:
+                                rightTriangleCalulations();
+                                break;
+                            case 2:
+                                lawOfCosineChart();
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break; 
+                            case 6:
+                                break;
+                            default:
+                                break;
+                        }
+                        }
+                        while (rightTriangleChoice != 7);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
+                }
+                
+                } while (triangleChoice != 4);
+                
                 break;
-
+                
                 //Circles
             case 2:
                 do {
@@ -959,8 +1005,7 @@ double angToRad(double angle) {
  ********************************************************************************/
 
 
-void triangleMenu(int choice) {
-    do {
+void triangleMenu() {
         system("cls");
         cout << endl << endl << endl;
         cout << setw(10) << "" << "     TRIANGLE MENU" << endl;
@@ -971,40 +1016,13 @@ void triangleMenu(int choice) {
         cout << setw(10) << "" << "4. Exit back to main menu" << endl;
         cout << endl;
         cout << setw(10) << "" << "Enter Your Choice: ";
-        cin >> choice;
-
-        if (choice == 1) {
-            menuForRightTriangles(choice);
-        }
-        if (choice == 2) {
-            menuforEqualateralTriangle(choice);
-        }
-        if (choice == 3) {
-            menuforIsoscelesTriangle(choice);
-        }
-        if (choice == 4) {
-            break;
-        }
-        if (choice < 0 || choice > 4) {
-
-            while (choice < 0 || choice > 4) {
-                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
-                cout << endl;
-                cout << setw(10) << "" << "press 1, 2, 3, or 4 to go back to 'Enter Your Choice:': ";
-                cin >> choice;
-            }
-        }
-
-    } while (choice != 4);
 }
 
-void menuForRightTriangles(int choice) {
+void menuForRightTriangles() {
     cout << fixed << showpoint << setprecision(3) << endl;
     double leg1, leg2, hyp;
     double a, b, c, A, B, C, x1, y1, x2, y2, x3, y3, side_A, side_B, side_C;
 
-
-    do {
         system("cls");
         cout << endl << endl << endl;
         cout << setw(10) << "" << "RIGHT AND LAWS OF TRIANGLE MENU" << endl;
@@ -1016,44 +1034,6 @@ void menuForRightTriangles(int choice) {
         cout << setw(10) << "" << "5. Calculating cosine" << endl;
         cout << setw(10) << "" << "6. Calculating Tangent" << endl;
         cout << setw(10) << "" << "7. Exit Program to main Triangle Menu" << endl;
-
-
-        cout << endl;
-        cout << setw(10) << "" << "Enter Your Choice: ";
-        cin >> choice;
-
-        if (choice == 1) {
-            //calOfPythTheorem();
-            rightTriangleCalulations(leg1, leg2, hyp);
-
-
-        }
-        if (choice == 2) {
-            lawOfCosineChart(a, b, c, A, B, C);
-        }
-        if (choice == 3) {
-            triangleCalcDistance(x1, y1, x2, y2, x3, y3, side_A, side_B, side_C);
-        }
-        if (choice == 7) {
-            triangleMenu(choice);
-        }
-
-        if (choice < 0 || choice > 4) {
-
-
-
-            while (choice < 0 || choice > 4) {
-                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
-                cout << endl;
-                cout << setw(10) << "" << "press 4 to go back to Enter Choice: ";
-                cin >> choice;
-            }
-        }
-
-
-    } while (choice != 4);
-
-
 
 }
 
@@ -1072,28 +1052,6 @@ void menuforEqualateralTriangle(int choice) {
         cout << endl;
         cout << setw(10) << "" << "Enter Your Choice: ";
         cin >> choice;
-
-
-        if (choice == 4) {
-            triangleMenu(choice);
-        }
-        if (choice == 1) {
-            areaOfanEqualateral(A, a);
-        }
-        if (choice < 0 || choice > 4) {
-
-
-
-            while (choice < 0 || choice > 4) {
-                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
-                cout << endl;
-                cout << setw(10) << "" << "press 1, 2, 3, or 4 to go back to 'Enter your Choice:' ";
-                cin >> choice;
-            }
-        }
-
-
-
 
     } while (choice == 1 || choice == 2 || choice == 3 || choice == 4);
 
@@ -1116,31 +1074,14 @@ void menuforIsoscelesTriangle(int choice) {
         cout << setw(10) << "" << "Enter Your Choice: ";
         cin >> choice;
 
-        if (choice == 1) {
-            calcAreaOfIsosceles(b, h, A);
-        }
-        if (choice == 4) {
-            triangleMenu(choice);
-        }
-        if (choice < 0 || choice > 4) {
-
-
-
-            while (choice < 0 || choice > 4) {
-                cout << setw(10) << "" << "Wrong Inputs!!!!!!! choose from 1-4 Please! " << endl;
-                cout << endl;
-                cout << setw(10) << "" << "press 1, 2, 3, or 4 to go back to 'Enter your Choice:' ";
-                cin >> choice;
-            }
-        }
 
 
     } while (choice == 1 || choice == 2 || choice == 3 || choice == 4);
 
 }
 
-void rightTriangleCalulations(double &leg_a, double &leg_b, double &hyp) {
-    double choice, leg1, leg2;
+void rightTriangleCalulations() {
+    double leg_a, leg_b;
 
     clearScreen();
 
@@ -1187,34 +1128,16 @@ void rightTriangleCalulations(double &leg_a, double &leg_b, double &hyp) {
 
     cout << endl << endl;
 
-    cout << setw(10) << "" << "The Answer is: " << calOfPythTheorem(leg_a, leg_b, hyp) << endl << endl;
+    cout << setw(10) << "" << "The Answer is: " << calOfPythTheorem(leg_a, leg_b) << endl << endl;
 
     cout << endl;
-
-    do {
-        cout << setw(10) << "" << "Press 4 to go back to the right Right Triangle Menu or 1 to try again: ";
-        cin >> choice;
-
-        if (choice == 4) {
-            menuForRightTriangles(choice);
-        }
-        if (choice == 1) {
-            rightTriangleCalulations(leg1, leg2, hyp);
-        }
-
-        if (choice != 4) {
-            cout << endl;
-            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
-            cout << endl;
-        }
-    } while (choice != 4);
 
     pause();
 
 }
 
-double calOfPythTheorem(double leg_a, double leg_b, double hyp) {
-    return hyp = sqrt(pow(leg_a, 2) + pow(leg_b, 2));
+double calOfPythTheorem(double leg_a, double leg_b) {
+    return sqrt(pow(leg_a, 2) + pow(leg_b, 2));
 }
 
 double calcofLawofcosine(double a, double b, double c, double C) {
@@ -1230,10 +1153,11 @@ double CalcToFindAngleA(double A, double B, double C) {
     return A = 180 - (B + C);
 }
 
-void lawOfCosineChart(double a, double b, double c, double A, double B, double C) {
+void lawOfCosineChart() {
+    
+    double a, b, c, A, B , C;
 
     system("cls");
-    double choice;
     cout << endl << endl << endl;
 
 
@@ -1306,25 +1230,6 @@ void lawOfCosineChart(double a, double b, double c, double A, double B, double C
     cout << setw(10) << "" << "angle A: " << A << endl;
     cout << endl;
 
-    do {
-        cout << setw(10) << "" << "Press 4 to go back to the right Right Triangle an law Menu or 1 to try again: ";
-        cin >> choice;
-
-
-        if (choice == 4) {
-            menuForRightTriangles(choice);
-        }
-        if (choice == 1) {
-            lawOfCosineChart(a, b, c, A, B, C);
-        }
-
-        if (choice != 4) {
-            cout << endl;
-            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
-            cout << endl;
-        }
-    } while (choice != 4);
-
     system("pause");
 }
 
@@ -1360,24 +1265,6 @@ void areaOfanEqualateral(double A, double a) {
     cout << setw(10) << "" << "The Area of the Equalateral is: " << A << endl;
     cout << endl << endl;
 
-    do {
-        cout << setw(10) << "" << "Press 4 to go back to the Equalateral Triangle Menu or 1 to try again: ";
-        cin >> choice;
-
-
-        if (choice == 4) {
-            menuforEqualateralTriangle(choice);
-        }
-        if (choice == 1) {
-            areaOfanEqualateral(A, a);
-        }
-
-        if (choice != 4) {
-            cout << endl;
-            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
-            cout << endl;
-        }
-    } while (choice != 4);
 
     system("pause");
 }
@@ -1439,28 +1326,7 @@ void calcAreaOfIsosceles(double &b, double &h, double &A) {
     cout << setw(10) << "" << "The Area of the Isosceles triangle is: " << A << endl;
     cout << endl;
     cout << endl;
-
-    do {
-        cout << setw(10) << "" << "Press 4 to go back to the Isosceles Triangle Menu or 1 to try again: ";
-        cin >> choice;
-
-
-        if (choice == 4) {
-            menuforIsoscelesTriangle(choice);
-        }
-        if (choice == 1) {
-            calcAreaOfIsosceles(b, h, A);
-        }
-
-        if (choice != 4) {
-            cout << endl;
-            cout << setw(10) << "" << "Wrong input!!!! Try Again" << endl;
-            cout << endl;
-        }
-    } while (choice != 4);
-
-
-
+    
     system("pause");
 }
 
@@ -1507,3 +1373,28 @@ double triangleCalcDistance(double x1, double y1, double x2, double y2,
     pause();
 
 }
+
+int triangleChoice() {
+    
+    int triangleChoice;
+    cin >> triangleChoice;
+    while (triangleChoice < 1 || triangleChoice > 4) {
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
+        cin >> triangleChoice;
+    }
+    return triangleChoice;
+    
+}
+
+int getRightTriangleChoice() {
+    int rightTriangleChoice;
+    cin >> rightTriangleChoice;
+    while (rightTriangleChoice < 1 || rightTriangleChoice > 7) {
+        cout << "The only valid Choices are 1-7. Please re-enter: ";
+        cin >> rightTriangleChoice;
+    }
+    return rightTriangleChoice;
+}
+    
+    
+    
