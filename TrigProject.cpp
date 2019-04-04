@@ -55,8 +55,8 @@ double distanceFormula(double, double, double, double);
 
 void triangleMenu();
 void menuForRightTriangles();
-void menuforEqualateralTriangle(int);
-void menuforIsoscelesTriangle(int);
+void menuforEqualateralTriangle();
+void menuforIsoscelesTriangle();
 void rightTriangleCalulations();
 double calOfPythTheorem(double, double);
 double calcofLawofcosine(double, double, double, double);
@@ -74,6 +74,8 @@ double triangleCalcDistance(double, double, double, double,
 
 int triangleChoice();
 int getRightTriangleChoice();
+int getEqTriangleChoice();
+int getIsosTriangleChoice();
 
 const double PI = 3.14159;
 
@@ -82,6 +84,8 @@ int main() {
     int choice,
             triangleChoice,
             rightTriangleChoice,
+            isTriChoice,
+            eqTriChoice,
             trapChoice,
             circChoice;
 
@@ -131,8 +135,42 @@ int main() {
                         while (rightTriangleChoice != 7);
                         break;
                     case 2:
+                        do {
+                        menuforEqualateralTriangle();
+                        
+                        eqTriChoice = getEqTriangleChoice();
+                        
+                        switch (eqTriChoice) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                        } while(eqTriChoice != 4);
+                        
                         break;
                     case 3:
+                        do {
+                            menuforIsoscelesTriangle();
+                            
+                            isTriChoice = getIsosTriangleChoice();
+                            
+                            switch (isTriChoice) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                default:
+                                    break;
+                            }
+                        } while (isTriChoice != 4);
                         break;
                     default:
                         break;
@@ -1037,32 +1075,22 @@ void menuForRightTriangles() {
 
 }
 
-void menuforEqualateralTriangle(int choice) {
-    int A, a;
-
-    do {
+void menuforEqualateralTriangle() {
+    
         system("cls");
         cout << endl << endl << endl;
         cout << setw(10) << "" << "EQUALATERAL TRIANGLE MENU" << endl;
         cout << setw(10) << "" << "----------------------------" << endl;
         cout << setw(10) << "" << "1.Area of EQ Triangle " << endl;
         cout << setw(10) << "" << "2.Finding the height of an EQ Triangle " << endl;
-        cout << setw(10) << "" << "3. " << endl;
+        cout << setw(10) << "" << "3.Perimeter " << endl;
         cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
         cout << endl;
-        cout << setw(10) << "" << "Enter Your Choice: ";
-        cin >> choice;
-
-    } while (choice == 1 || choice == 2 || choice == 3 || choice == 4);
-
-
 
 }
 
-void menuforIsoscelesTriangle(int choice) {
-    do {
+void menuforIsoscelesTriangle() {
         system("cls");
-        double b, h, A;
         cout << endl << endl << endl;
         cout << setw(10) << "" << "ISOSCELES TRIANGLE MENU" << endl;
         cout << setw(10) << "" << "----------------------------" << endl;
@@ -1071,13 +1099,6 @@ void menuforIsoscelesTriangle(int choice) {
         cout << setw(10) << "" << "3.Find The height of the Isosceles Triangle " << endl;
         cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
         cout << endl;
-        cout << setw(10) << "" << "Enter Your Choice: ";
-        cin >> choice;
-
-
-
-    } while (choice == 1 || choice == 2 || choice == 3 || choice == 4);
-
 }
 
 void rightTriangleCalulations() {
@@ -1398,3 +1419,25 @@ int getRightTriangleChoice() {
     
     
     
+
+int getEqTriangleChoice() {
+    
+    int eqTriangleChoice;
+    cin >> eqTriangleChoice;
+    while (eqTriangleChoice < 1 || eqTriangleChoice > 4) {
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
+        cin >> eqTriangleChoice;
+    }
+    return eqTriangleChoice;
+}
+
+int getIsosTriangleChoice() {
+    
+    int isTriangleChoice;
+    cin >> isTriangleChoice;
+    while (isTriangleChoice < 1 || isTriangleChoice > 4) {
+        cout << "The only valid Choices are 1-4. Please re-enter: ";
+        cin >> isTriangleChoice;
+    }
+    return isTriangleChoice;
+}
