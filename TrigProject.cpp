@@ -54,6 +54,14 @@ double angToRad(double);
 double distanceFormula(double, double, double, double);
 void calcDistanceRIGHT();
 double radToDeg(double);
+void heightOfEquilateral();
+void perimeterofEquilateral();
+void semiPerimeterofEQ();
+void areaOfanEquilateral();
+double calSemiPerimeterofEQ(double side);
+double calPerimeterofEQ(double side);
+double calHeightofEQ(double side);
+double calofAreaofEQ(double a);
 
 void triangleMenu();
 void menuForRightTriangles();
@@ -169,9 +177,10 @@ int main() {
                                         areaOfanEqualateral();
                                         break;
                                     case 2:
-
+                                        heightOfEquilateral();
                                         break;
                                     case 3:
+                                        perimeterofEquilateral();
                                         break;
                                     default:
                                         break;
@@ -1100,6 +1109,8 @@ void menuForRightTriangles() {
     cout << setw(10) << "" << "4. Calculating Sine" << endl;
     cout << setw(10) << "" << "5. Calculating Tangent" << endl;
     cout << setw(10) << "" << "6. Exit Program to main Triangle Menu" << endl;
+    cout << endl;
+    cout << setw(10) << "" << "Enter Your Choice: ";
 
 }
 
@@ -1114,7 +1125,7 @@ void menuforEqualateralTriangle() {
     cout << setw(10) << "" << "3.Perimeter " << endl;
     cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
     cout << endl;
-
+    cout << setw(10) << "" << "Enter Your Choice: ";
 }
 
 void menuforIsoscelesTriangle() {
@@ -1127,6 +1138,7 @@ void menuforIsoscelesTriangle() {
     cout << setw(10) << "" << "3.Find The height of the Isosceles Triangle " << endl;
     cout << setw(10) << "" << "4. Exit back to TIRANGLE MENU" << endl;
     cout << endl;
+    cout << setw(10) << "" << "Enter Your Choice: ";
 }
 
 void rightTriangleCalulations() {
@@ -1289,9 +1301,9 @@ double calofAreaofEQ(double A, double a) {
 void areaOfanEqualateral() {
 
     double A, a;
-    
+
     system("cls");
-    
+
     cout << endl << endl << endl;
     cout << setw(10) << "" << "CALULATING THE AREA OF AN EQUALTERAL" << endl;
     cout << setw(10) << "" << "-----------------------------------" << endl;
@@ -1320,14 +1332,34 @@ void areaOfanEqualateral() {
     system("pause");
 }
 
+/****************************************************************************
+ *                 Function Description: areaOfIsosceles()                  *
+ *                                                                          *
+ *      This function is responsible for calculating the area of an		    *
+ *		Isosceles triangle using one side and the height of the triangle.	*
+ *                                                                          *
+ *      @Precondition:  This funtion takes one side and height (doubles)	*
+ *	 					as arguments.										*
+ *      @Postcondition: This function returns the area of the triangle. 	*
+ ***************************************************************************/
 double areaOfIsosceles(double A, double b, double h) {
     return A = (b * h) / 2;
 }
 
+/****************************************************************************
+ *                 Function Description: calcAreaOfIsosceles()              *
+ *                                                                          *
+ *      This function is responsible for prompting the user to enter the	*
+ *		length of one side, height and an angle so the area can be			*
+ *      calculated and provides the necessary format.                       *
+ *      @Precondition:  This funtion takes one side (double), height		*
+ *	 					(double) and an angle (double0 as arguments			*
+ *      @Postcondition: This function returns nothing 						*
+ ***************************************************************************/
 void calcAreaOfIsosceles() {
 
     double b, h, A;
-    
+
     system("cls");
     int choice;
     cout << endl << endl << endl;
@@ -1383,6 +1415,16 @@ void calcAreaOfIsosceles() {
     system("pause");
 }
 
+/****************************************************************************
+ *                 Function Description: formulaForCosine()                 *
+ *                                                                          *
+ *      This function is responsible for calculating cosine given the 		*
+ *		adjacent side and the hypotenuse.			   						*
+ *                                                                          *
+ *      @Precondition:  This funtion takes the adjacent and hypotenuse		*
+ *	 					(doubles) as arguments.								*
+ *      @Postcondition: This function returns the value of cosine		 	*
+ ***************************************************************************/
 double formulaForCosine(double adj, double hyp, double cosine) {
     return cosine = adj / hyp;
 }
@@ -1670,20 +1712,7 @@ void menuForCos() {
     cout << setw(10) << "" << "To have the degree the function has to be x = arcCos(opp/hyp)" << endl;
     cout << setw(10) << "" << "So x = " << x << static_cast<char> (248) << endl;
 
-
-
     system("pause");
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
@@ -2152,12 +2181,12 @@ void FindingDegreesUsingTanIsosceles() {
 void calcDistanceRIGHT() {
 
     double x1, y1,
-            x2, y2, 
+            x2, y2,
             x3, y3,
             side_A,
             side_B,
             side_C;
-    
+
     clearScreen();
 
     cout << "\n\n\n";
@@ -2239,4 +2268,171 @@ void calcDistanceRIGHT() {
  ********************************************************************************/
 double radToDeg(double rad) {
     return (rad * 180) / PI;
+}
+
+
+
+/***********************************************************************
+*                           calcSemiPerimeter()                        *
+*               This function takes in a double to be inserted into    *
+*               the Semiperimeter Formula.                             *
+*                                                                      *
+*           Precondition: Takes in a double as an argument.            *
+*                                                                      *
+*           Postcondition: The function returns the half value of      *
+*           perimeter.                                                 *
+*                                                                      *
+***********************************************************************/
+
+double calSemiPerimeterofEQ(double side)
+{
+	return (side * 3) / 2;
+}
+double calPerimeterofEQ(double side)
+{
+	return side * 3;
+}
+double calHeightofEQ(double side)
+{
+	return side * (sqrt(3) / 2);
+}
+
+double calofAreaofEQ(double a)
+{
+	return (sqrt(3)) / 4 * pow(a, 2);
+}
+
+/***********************************************************************
+*                              areaOfanEquilateral()                   *
+*           This function displays a menu prompting the user to enter  *
+*           a side length for a.                                       *
+*                                                                      *
+*           Precondition: Takes in a double as an argument.            *
+*                                                                      *
+*           Postcondition: Returns nothing. Intended to display        *
+*           Sub-Menu                                                   *
+*                                                                      *
+***********************************************************************/
+
+void areaOfanEquilateral()
+{
+    double A, a;
+	system("cls");
+	
+	cout << endl << endl << endl;
+	cout << setw(10) << "" << "CALULATING THE AREA OF AN EQUALTERAL" << endl;
+	cout << setw(10) << "" << "-----------------------------------" << endl;
+	cout << endl;
+	cout << setw(10) << "" << "Enter The length of side a: ";
+	cin >> a;
+
+	if (a <= 0)
+	{
+
+		while (a <= 0)
+		{
+
+			cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+			cin >> a;
+		}
+
+
+	}
+	A = calofAreaofEQ(A, a);
+
+
+	cout << endl;
+	cout << setw(10) << "" << "The Area of the Equilateral is: " << A << endl;
+	cout << endl << endl;
+}
+
+/***********************************************************************
+*                           semiPerimeterofEQ                          *
+*           This function displays a menu prompting the user to        *
+*           enter a side.                                              *
+*                                                                      *
+*           Precondition: Takes one double as its argument             *
+*           Postcondition: Returns nothing. Displays a Submenu.        *
+*                                                                      *
+***********************************************************************/
+void semiPerimeterofEQ()
+{
+	double side, semiperimeter;
+	clearScreen();
+	cout << "\n\n\n";
+	cout << setw(17) << "" << "CALCULATING SEMIPERIMETER" << endl;
+	cout << setw(10) << "" << "-------------------------------" << endl << endl;
+	cout << setw(10) << "" << "To calculate the semiperimeter" << endl;
+	cout << setw(10) << "" << "of an equilateral we need" << endl;
+	cout << setw(10) << "" << "one side." << endl << endl;
+	cout << setw(10) << "" << "Enter a side";
+	cin >> side;
+
+	while (side <= 0)
+	{
+
+		cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+		cin >> side;
+	}
+	semiperimeter = calSemiPerimeterofEQ(side);
+
+	cout << setw(10) << "" << "The semiperimeter is: " << semiperimeter << "units" << endl << endl;
+}
+
+/***********************************************************************
+*                      perimeterOfEquilateral()
+*               This function displays a menu prompting the user to
+*               enter one side.
+*
+*               Precondition: Takes in a double as an argument.
+*
+*               Postcondition:
+*
+************************************************************************/
+
+void perimeterofEquilateral()
+{
+	double side, perimeter;
+	clearScreen();
+	cout << "\n\n\n";
+	cout << setw(17) << "" << "CALCULATING PERIMETER" << endl;
+	cout << setw(10) << "" << "-------------------------------" << endl << endl;
+	cout << setw(10) << "" << "To calculate the perimeter" << endl;
+	cout << setw(10) << "" << "of an equilateral we need" << endl;
+	cout << setw(10) << "" << "one side." << endl << endl;
+	cout << setw(10) << "" << "Enter a side";
+	cin >> side;
+
+	while (side <= 0)
+	{
+
+		cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+		cin >> side;
+	}
+	perimeter = calPerimeterofEQ(side);
+
+	cout << setw(10) << "" << "The perimeter is: " << perimeter << "units" << endl << endl;
+}
+
+void heightOfEquilateral() {
+
+	double height, side;
+	clearScreen();
+	cout << "\n\n\n";
+	cout << setw(17) << "" << "CALCULATING HEIGHT" << endl;
+	cout << setw(10) << "" << "-------------------------------" << endl << endl;
+	cout << setw(10) << "" << "To calculate the height of an" << endl;
+	cout << setw(10) << "" << "equilateral we need one side." << endl;
+	cout << setw(10) << "" << "Enter a side";
+	cin >> side;
+
+	while (side <= 0)
+	{
+
+		cout << setw(10) << "" << "No Negatives!!! Please try again: ";
+		cin >> side;
+	}
+	height = calHeightofEQ(side);
+
+	cout << setw(10) << "" << "The height is: " << height << "units" << endl << endl;
 }
